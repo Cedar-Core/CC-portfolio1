@@ -154,3 +154,6 @@ export const Shad = {
   AvatarImage,
   AvatarFallback,
 };
+
+// Motion/Animation exports
+export * from "./motion";

@@ -1,9 +1,17 @@
+"use client";
+
 import * as React from "react";
 import SectionWrapper from "@/components/ui-components/shared/SectionWrapper";
 import SectionHeader from "@/components/ui-components/shared/SectionHeader";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { getSkills, config } from "@/config/exports";
+import {
+  FadeInUp,
+  StaggerContainer,
+  StaggerItem,
+  motion,
+} from "@/components/ui/motion";
 
 interface SkillsSectionProps {
   className?: string;
@@ -22,34 +30,45 @@ const SkillsSection = ({ className }: SkillsSectionProps) => {
       />
 
       {/* Category Badges */}
-      <div className="flex flex-wrap justify-center gap-2 mb-10">
-        {categories.map((category) => (
-          <Badge
+      <FadeInUp className="flex flex-wrap justify-center gap-2 mb-10">
+        {categories.map((category, index) => (
+          <motion.div
             key={category.id}
-            variant="outline"
-            className="px-4 py-2 text-sm"
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.2 }}
           >
-            {category.label}
-          </Badge>
+            <Badge
+              variant="outline"
+              className="px-4 py-2 text-sm cursor-default"
+            >
+              {category.label}
+            </Badge>
+          </motion.div>
         ))}
-      </div>
+      </FadeInUp>
 
       {/* Skills Grid */}
-      <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <StaggerContainer className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
         {skills.slice(0, 10).map((skill) => (
-          <div key={skill.id} className="space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="font-medium text-foreground dark:text-white">
-                {skill.name}
-              </span>
-              <span className="text-sm text-foreground-muted">
-                {skill.proficiencyPercent}%
-              </span>
-            </div>
-            <Progress value={skill.proficiencyPercent} className="h-2" />
-          </div>
+          <StaggerItem key={skill.id}>
+            <motion.div
+              className="space-y-2"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-medium text-foreground dark:text-white">
+                  {skill.name}
+                </span>
+                <span className="text-sm text-foreground-muted">
+                  {skill.proficiencyPercent}%
+                </span>
+              </div>
+              <Progress value={skill.proficiencyPercent} className="h-2" />
+            </motion.div>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
     </SectionWrapper>
   );
 };
