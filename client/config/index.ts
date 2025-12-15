@@ -1,11 +1,3 @@
-/**
- * Portfolio Configuration
- * Centralized configuration for all portfolio content and metadata
- *
- * This file serves as the single source of truth for all portfolio data.
- * UI components should consume data from this config exclusively.
- */
-
 import type { PortfolioConfig } from "./types";
 
 export const config: PortfolioConfig = {
@@ -1168,7 +1160,7 @@ export const config: PortfolioConfig = {
     ],
     author: "Cedar Core",
     themeColor: "#5D9EFF",
-    favicon: "/favicon.ico",
+    favicon: "/logo-dark.png",
     appleTouchIcon: "/apple-touch-icon.png",
     manifest: "/site.webmanifest",
   },

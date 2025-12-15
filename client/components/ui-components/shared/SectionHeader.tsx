@@ -1,5 +1,7 @@
-import * as React from "react";
+"use client";
+
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 interface SectionHeaderProps {
   label: string;
@@ -24,21 +26,37 @@ const SectionHeader = ({
         className
       )}
     >
-      <span className="text-primary font-medium text-sm uppercase tracking-wider">
+      <motion.span
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="text-primary font-medium text-sm uppercase tracking-wider inline-block"
+      >
         {label}
-      </span>
-      <h2 className="text-3xl md:text-4xl font-bold text-foreground dark:text-white mt-3 mb-4">
+      </motion.span>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        className="text-3xl md:text-4xl font-bold text-foreground dark:text-white mt-3 mb-4"
+      >
         {title}
-      </h2>
+      </motion.h2>
       {description && (
-        <p
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className={cn(
             "text-foreground-secondary dark:text-foreground-muted",
             align === "center" && "max-w-2xl mx-auto"
           )}
         >
           {description}
-        </p>
+        </motion.p>
       )}
     </div>
   );

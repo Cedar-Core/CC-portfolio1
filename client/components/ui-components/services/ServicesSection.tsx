@@ -1,9 +1,12 @@
+"use client";
+
 import {
   SectionHeader,
   SectionWrapper,
 } from "@/components/ui-components/shared";
 import ServiceCard from "./ServiceCard";
 import { getServices } from "@/config/helpers";
+import { StaggerContainer, StaggerItem, motion } from "@/components/ui/motion";
 
 interface ServicesSectionProps {
   className?: string;
@@ -20,17 +23,20 @@ const ServicesSection = ({ className }: ServicesSectionProps) => {
         description="Comprehensive digital solutions tailored to your unique needs and goals."
       />
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service) => (
-          <ServiceCard
-            key={service.id}
-            icon={service.icon}
-            title={service.title}
-            description={service.shortDescription}
-            features={service.features}
-          />
+          <StaggerItem key={service.id}>
+            <motion.div whileHover={{ y: -8 }} transition={{ duration: 0.3 }}>
+              <ServiceCard
+                icon={service.icon}
+                title={service.title}
+                description={service.shortDescription}
+                features={service.features}
+              />
+            </motion.div>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerContainer>
     </SectionWrapper>
   );
 };
