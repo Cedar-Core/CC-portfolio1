@@ -1,26 +1,97 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light Mode */
+  --background: #f8fafc;
+  --background-secondary: #ffffff;
+  --foreground: #031128;
+  --foreground-secondary: #334155;
+  --foreground-muted: #64748b;
+  
+  /* Brand Colors */
+  --primary: #4A8FE7;
+  --primary-hover: #3A7FD7;
+  --primary-light: #e0edff;
+  --secondary: #525FF9;
+  --secondary-hover: #424FE9;
+  --secondary-light: #eef0ff;
+  
+  /* Borders & Surfaces */
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --surface: #ffffff;
+  --surface-hover: #f1f5f9;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
   --color-foreground: var(--foreground);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-light: var(--primary-light);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-light: var(--secondary-light);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Dark Mode */
+    --background: #031128;
+    --background-secondary: #061b38;
+    --foreground: #f1f5f9;
+    --foreground-secondary: #cbd5e1;
+    --foreground-muted: #94a3b8;
+    
+    /* Brand Colors */
+    --primary: #5D9EFF;
+    --primary-hover: #7DB3FF;
+    --primary-light: rgba(93, 158, 255, 0.15);
+    --secondary: #525FF9;
+    --secondary-hover: #6B77FF;
+    --secondary-light: rgba(82, 95, 249, 0.15);
+    
+    /* Borders & Surfaces */
+    --border: #1e3a5f;
+    --border-hover: #2d4a6f;
+    --surface: #0a2240;
+    --surface-hover: #0d2a4d;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-hover);
 }
