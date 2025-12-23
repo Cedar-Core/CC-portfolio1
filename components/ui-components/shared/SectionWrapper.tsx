@@ -16,9 +16,9 @@ const SectionWrapper = ({
   variant = "default",
 }: SectionWrapperProps) => {
   const variantClasses = {
-    default: "bg-background",
-    alternate: "bg-background-secondary",
-    dark: "bg-[#010812]",
+    default: "bg-transparent",
+    alternate: "bg-transparent",
+    dark: "bg-transparent",
   };
 
   return (

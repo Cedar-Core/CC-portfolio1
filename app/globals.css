@@ -64,30 +64,36 @@
   --primary: #5D9EFF;
   --primary-hover: #7DB3FF;
   --primary-light: rgba(93, 158, 255, 0.12);
-  --primary-glow: rgba(93, 158, 255, 0.3);
+  --primary-glow: rgba(93, 158, 255, 0.4);
   --secondary: #525FF9;
   --secondary-hover: #6B77FF;
   --secondary-light: rgba(82, 95, 249, 0.12);
-  --secondary-glow: rgba(82, 95, 249, 0.3);
+  --secondary-glow: rgba(82, 95, 249, 0.4);
+  
+  /* Neon accent colors */
+  --neon-blue: #00D4FF;
+  --neon-purple: #7B61FF;
+  --neon-glow: 0 0 20px rgba(93, 158, 255, 0.5), 0 0 40px rgba(93, 158, 255, 0.3);
   
   /* Cedar Theme */
   --cedar: #4ADE80;
   --cedar-light: rgba(74, 222, 128, 0.1);
   --cedar-glow: rgba(74, 222, 128, 0.2);
   
-  /* Borders & Surfaces */
-  --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(255, 255, 255, 0.15);
-  --border-subtle: rgba(255, 255, 255, 0.04);
-  --surface: rgba(255, 255, 255, 0.03);
-  --surface-hover: rgba(255, 255, 255, 0.06);
-  --surface-elevated: rgba(255, 255, 255, 0.05);
+  /* Borders & Surfaces - Glass effect */
+  --border: rgba(93, 158, 255, 0.12);
+  --border-hover: rgba(93, 158, 255, 0.25);
+  --border-subtle: rgba(93, 158, 255, 0.06);
+  --surface: rgba(255, 255, 255, 0.02);
+  --surface-hover: rgba(255, 255, 255, 0.05);
+  --surface-elevated: rgba(255, 255, 255, 0.04);
   
   /* Shadows for dark mode */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.5), 0 4px 10px -2px rgba(0, 0, 0, 0.4);
   --shadow-glow: 0 0 60px var(--primary-glow);
+  --shadow-neon: 0 0 20px rgba(93, 158, 255, 0.4), 0 0 40px rgba(93, 158, 255, 0.2);
 }
 
 /* Light mode override when system prefers light */
@@ -129,6 +135,8 @@
   --color-secondary-hover: var(--secondary-hover);
   --color-secondary-light: var(--secondary-light);
   --color-secondary-glow: var(--secondary-glow);
+  --color-neon-blue: var(--neon-blue);
+  --color-neon-purple: var(--neon-purple);
   --color-cedar: var(--cedar);
   --color-cedar-light: var(--cedar-light);
   --color-border: var(--border);
@@ -137,8 +145,8 @@
   --color-surface: var(--surface);
   --color-surface-hover: var(--surface-hover);
   --color-surface-elevated: var(--surface-elevated);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-poppins);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 /* ============================================================================
@@ -154,7 +162,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-family: 'Poppins', var(--font-sans), system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -241,9 +249,122 @@ body {
 /* Grid pattern background */
 .grid-pattern {
   background-image: 
-    linear-gradient(var(--border-subtle) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+    linear-gradient(rgba(93, 158, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(93, 158, 255, 0.05) 1px, transparent 1px);
   background-size: 60px 60px;
+}
+
+/* Glass card - Premium glass morphism */
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(93, 158, 255, 0.12);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Floating panel - Elevated glass effect */
+.floating-panel {
+  background: linear-gradient(180deg, rgba(5, 26, 53, 0.8) 0%, rgba(3, 17, 40, 0.9) 100%);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(93, 158, 255, 0.15);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(93, 158, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Hover glow effect */
+.hover-glow {
+  transition: all 0.3s ease;
+}
+.hover-glow:hover {
+  box-shadow: 
+    0 0 20px rgba(93, 158, 255, 0.3),
+    0 0 40px rgba(93, 158, 255, 0.15),
+    0 8px 32px rgba(0, 0, 0, 0.3);
+  border-color: rgba(93, 158, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Neon text glow */
+.neon-text {
+  text-shadow: 
+    0 0 10px rgba(93, 158, 255, 0.5),
+    0 0 20px rgba(93, 158, 255, 0.3),
+    0 0 40px rgba(93, 158, 255, 0.2);
+}
+
+/* Glitch effect lines */
+.glitch-lines {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glitch-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(93, 158, 255, 0.4) 20%, 
+    rgba(82, 95, 249, 0.6) 50%, 
+    rgba(93, 158, 255, 0.4) 80%, 
+    transparent 100%);
+  opacity: 0;
+  animation: glitch-scan 8s linear infinite;
+}
+
+.glitch-line-1 { animation-delay: 0s; }
+.glitch-line-2 { animation-delay: 2.5s; }
+.glitch-line-3 { animation-delay: 5s; }
+
+/* Data blocks - floating UI elements */
+.data-block {
+  position: absolute;
+  background: linear-gradient(135deg, rgba(93, 158, 255, 0.08) 0%, rgba(82, 95, 249, 0.05) 100%);
+  border: 1px solid rgba(93, 158, 255, 0.1);
+  border-radius: 4px;
+  opacity: 0.3;
+}
+
+.data-block-1 {
+  width: 120px;
+  height: 80px;
+  top: 15%;
+  left: 5%;
+  animation: float-block 20s ease-in-out infinite;
+}
+
+.data-block-2 {
+  width: 80px;
+  height: 60px;
+  top: 60%;
+  right: 8%;
+  animation: float-block 25s ease-in-out infinite reverse;
+}
+
+.data-block-3 {
+  width: 100px;
+  height: 70px;
+  bottom: 20%;
+  left: 10%;
+  animation: float-block 18s ease-in-out infinite;
+  animation-delay: -5s;
+}
+
+/* Scanline animation */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.animate-scanline {
+  animation: scanline 8s linear infinite;
 }
 
 /* Dot pattern background */
@@ -280,6 +401,63 @@ body {
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
+}
+
+@keyframes glitch-scan {
+  0%, 100% { 
+    opacity: 0; 
+    top: -10%;
+  }
+  5% { opacity: 0.8; }
+  10% { opacity: 0; }
+  15% { opacity: 0.6; }
+  20% { opacity: 0; }
+  50% { 
+    opacity: 0; 
+    top: 110%;
+  }
+}
+
+@keyframes float-block {
+  0%, 100% { 
+    transform: translateY(0) translateX(0) rotate(0deg); 
+    opacity: 0.2;
+  }
+  25% { 
+    transform: translateY(-20px) translateX(10px) rotate(1deg); 
+    opacity: 0.35;
+  }
+  50% { 
+    transform: translateY(-10px) translateX(-5px) rotate(-0.5deg); 
+    opacity: 0.25;
+  }
+  75% { 
+    transform: translateY(-25px) translateX(5px) rotate(0.5deg); 
+    opacity: 0.3;
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(93, 158, 255, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(93, 158, 255, 0.5), 0 0 60px rgba(82, 95, 249, 0.3);
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 5s ease infinite;
 }
 
 /* Loading shimmer for skeletons */

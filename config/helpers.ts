@@ -202,3 +202,26 @@ export const getProjectsByTechnology = (tech: string): Project[] => {
     p.techStack.some((t) => t.toLowerCase() === tech.toLowerCase())
   );
 };
+
+export const getTechnologies = () => {
+  return config.technologies;
+};
+
+export const getProcessSteps = () => {
+  return config.processSteps;
+};
+
+export const getClients = () => {
+  return config.clients;
+};
+
+export const getClientTestimonials = () => {
+  return config.testimonials.slice(0, 3).map((t) => ({
+    id: t.order,
+    quote: t.content,
+    author: t.author,
+    role: t.role,
+    company: t.company,
+    avatar: t.avatar,
+  }));
+};

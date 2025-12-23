@@ -63,7 +63,6 @@ const Footer = ({ className }: FooterProps) => {
               >
                 <Button
                   text="Start a Project"
-                  rightIconName="ArrowRight"
                   className="rounded-full px-8 py-4 bg-linear-to-r from-primary to-secondary"
                   onClick={() => {
                     document

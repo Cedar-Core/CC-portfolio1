@@ -142,6 +142,82 @@ export const config: PortfolioConfig = {
     },
   ],
 
+  // ============================================================================
+  // Clients
+  // ============================================================================
+  clients: [
+    { name: "TechStart", industry: "SaaS" },
+    { name: "FinFlow", industry: "Fintech" },
+    { name: "HealthHub", industry: "Healthcare" },
+    { name: "RetailX", industry: "E-commerce" },
+    { name: "EduPro", industry: "EdTech" },
+    { name: "GreenLogix", industry: "Logistics" },
+  ],
+
+  // ============================================================================
+  // Technologies
+  // ============================================================================
+  technologies: [
+    { name: "React.js", icon: "Code", category: "Frontend", years: 6 },
+    { name: "Next.js", icon: "Layers", category: "Frontend", years: 4 },
+    { name: "TypeScript", icon: "FileCode", category: "Language", years: 5 },
+    { name: "Node.js", icon: "Server", category: "Backend", years: 7 },
+    { name: "Python", icon: "Terminal", category: "Language", years: 6 },
+    { name: "PostgreSQL", icon: "Database", category: "Database", years: 8 },
+    { name: "MongoDB", icon: "Database", category: "Database", years: 5 },
+    { name: "AWS", icon: "Cloud", category: "Cloud", years: 6 },
+    { name: "Docker", icon: "Box", category: "DevOps", years: 5 },
+    { name: "GraphQL", icon: "GitBranch", category: "API", years: 4 },
+    { name: "Redis", icon: "Zap", category: "Cache", years: 5 },
+    { name: "Kubernetes", icon: "Box", category: "DevOps", years: 3 },
+  ],
+
+  // ============================================================================
+  // Process Steps
+  // ============================================================================
+  processSteps: [
+    {
+      id: 1,
+      title: "Discovery",
+      description:
+        "We dive deep into your business goals, technical requirements, and user needs to define a clear project roadmap.",
+      icon: "Search",
+      deliverables: ["Requirements Doc", "Technical Spec", "Project Timeline"],
+    },
+    {
+      id: 2,
+      title: "Design",
+      description:
+        "Our designers create intuitive interfaces and system architectures that align with your brand and scale with your growth.",
+      icon: "Palette",
+      deliverables: ["UI/UX Designs", "Architecture Diagrams", "Prototypes"],
+    },
+    {
+      id: 3,
+      title: "Development",
+      description:
+        "We build using agile methodology with continuous integration, regular demos, and transparent communication.",
+      icon: "Code",
+      deliverables: ["Working Software", "Code Reviews", "Sprint Updates"],
+    },
+    {
+      id: 4,
+      title: "Testing",
+      description:
+        "Rigorous QA processes ensure your software is reliable, secure, and performs under pressure.",
+      icon: "CircleCheck",
+      deliverables: ["Test Reports", "Bug Fixes", "Performance Metrics"],
+    },
+    {
+      id: 5,
+      title: "Deployment",
+      description:
+        "We handle the launch with zero-downtime deployments, monitoring setup, and post-launch support.",
+      icon: "Rocket",
+      deliverables: ["Live Product", "Documentation", "Training"],
+    },
+  ],
+
   // ==========================================================================
   // Skills
   // ==========================================================================

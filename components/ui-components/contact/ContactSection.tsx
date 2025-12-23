@@ -35,7 +35,7 @@ const ContactSection = ({ className }: ContactSectionProps) => {
       />
 
       <div className="grid lg:grid-cols-5 gap-12">
-        {/* Contact Form */}
+        {/* Contact Form - Glass panel */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -43,7 +43,7 @@ const ContactSection = ({ className }: ContactSectionProps) => {
           transition={{ duration: 0.6 }}
           className="lg:col-span-3"
         >
-          <div className="p-8 rounded-2xl bg-surface/50 border border-border/50">
+          <div className="p-8 rounded-2xl glass-card">
             <ContactForm />
           </div>
         </motion.div>
@@ -56,7 +56,7 @@ const ContactSection = ({ className }: ContactSectionProps) => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="lg:col-span-2 space-y-6"
         >
-          {/* Info Cards */}
+          {/* Info Cards - Floating panels */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -70,14 +70,15 @@ const ContactSection = ({ className }: ContactSectionProps) => {
                   variants={hoverLift}
                   initial="rest"
                   whileHover="hover"
-                  className="p-4 rounded-xl bg-surface/30 border border-border/30 hover:border-primary/30 transition-colors"
+                  className="group p-5 rounded-xl glass-card hover:border-primary/50 transition-all duration-300 hover-glow"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-primary-light flex items-center justify-center shrink-0">
+                    <div className="relative w-12 h-12 rounded-xl bg-linear-to-br from-primary/20 to-secondary/10 flex items-center justify-center shrink-0">
+                      <div className="absolute inset-0 rounded-xl bg-primary/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
                       <Icon
                         name={info.icon || "Mail"}
-                        size={20}
-                        className="text-primary"
+                        size={22}
+                        className="text-primary relative z-10"
                       />
                     </div>
                     <div>

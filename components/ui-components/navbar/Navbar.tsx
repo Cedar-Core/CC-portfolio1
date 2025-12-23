@@ -139,7 +139,7 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
-          ? "bg-background/80 backdrop-blur-xl shadow-lg shadow-black/5 dark:bg-[#031128]/80 dark:shadow-black/20"
+          ? "bg-[#031128]/70 backdrop-blur-2xl shadow-lg shadow-primary/5 border-b border-primary/10"
           : "bg-transparent"
       )}
     >
@@ -148,7 +148,7 @@ const Navbar = () => {
         initial={{ scaleX: 0 }}
         animate={{ scaleX: scrolled ? 1 : 0 }}
         transition={{ duration: 0.5 }}
-        className="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-primary via-secondary to-primary origin-left"
+        className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-primary/50 to-transparent origin-center"
       />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -228,7 +228,7 @@ const Navbar = () => {
                 stiffness: 400,
                 damping: 20,
               }}
-              className="ml-2"
+              className="ml-4"
             >
               <motion.div
                 whileHover={{ scale: 1.02 }}
@@ -236,7 +236,7 @@ const Navbar = () => {
               >
                 <Button
                   text="Start a Project"
-                  className="rounded-full px-5 py-2 text-sm bg-foreground text-background hover:bg-foreground/90"
+                  className="rounded-full px-6 py-2.5 text-sm bg-linear-to-r from-primary to-secondary text-white font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all"
                   onClick={() => handleNavClick("#contact")}
                 />
               </motion.div>
