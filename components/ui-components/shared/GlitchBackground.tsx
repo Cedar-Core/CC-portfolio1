@@ -27,7 +27,7 @@ const GlitchBackground = ({
   // Particle animation
   useEffect(() => {
     if (!showParticles) return;
-    
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -53,9 +53,14 @@ const GlitchBackground = ({
       color: string;
     }
 
-    const particleCount = intensity === "high" ? 80 : intensity === "medium" ? 50 : 30;
+    const particleCount =
+      intensity === "high" ? 80 : intensity === "medium" ? 50 : 30;
     const particles: Particle[] = [];
-    const colors = ["rgba(93, 158, 255, ", "rgba(82, 95, 249, ", "rgba(255, 255, 255, "];
+    const colors = [
+      "rgba(93, 158, 255, ",
+      "rgba(82, 95, 249, ",
+      "rgba(255, 255, 255, ",
+    ];
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
@@ -96,10 +101,17 @@ const GlitchBackground = ({
           ctx.beginPath();
           ctx.arc(particle.x, particle.y, particle.size * 3, 0, Math.PI * 2);
           const gradient = ctx.createRadialGradient(
-            particle.x, particle.y, 0,
-            particle.x, particle.y, particle.size * 3
+            particle.x,
+            particle.y,
+            0,
+            particle.x,
+            particle.y,
+            particle.size * 3
           );
-          gradient.addColorStop(0, `${particle.color}${particle.opacity * 0.3})`);
+          gradient.addColorStop(
+            0,
+            `${particle.color}${particle.opacity * 0.3})`
+          );
           gradient.addColorStop(1, `${particle.color}0)`);
           ctx.fillStyle = gradient;
           ctx.fill();
@@ -118,10 +130,15 @@ const GlitchBackground = ({
   }, [showParticles, intensity]);
 
   return (
-    <div className={cn("fixed inset-0 z-0 pointer-events-none overflow-hidden", className)}>
+    <div
+      className={cn(
+        "fixed inset-0 z-0 pointer-events-none overflow-hidden",
+        className
+      )}
+    >
       {/* Base gradient */}
       <div className="absolute inset-0 bg-[#031128]" />
-      
+
       {/* Radial glow effects */}
       <div className="absolute top-1/4 left-1/4 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,_rgba(93,158,255,0.15)_0%,_transparent_60%)] blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,_rgba(82,95,249,0.12)_0%,_transparent_60%)] blur-3xl" />
@@ -129,7 +146,7 @@ const GlitchBackground = ({
 
       {/* Digital grid overlay */}
       {showGrid && (
-        <div 
+        <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `
@@ -143,7 +160,7 @@ const GlitchBackground = ({
 
       {/* Scanlines effect */}
       {showScanlines && (
-        <div 
+        <div
           className="absolute inset-0 opacity-[0.02] animate-scanline"
           style={{
             backgroundImage: `repeating-linear-gradient(
@@ -173,14 +190,11 @@ const GlitchBackground = ({
 
       {/* Particle canvas */}
       {showParticles && (
-        <canvas
-          ref={canvasRef}
-          className="absolute inset-0 w-full h-full"
-        />
+        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
       )}
 
       {/* Noise texture overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.015] mix-blend-overlay"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,

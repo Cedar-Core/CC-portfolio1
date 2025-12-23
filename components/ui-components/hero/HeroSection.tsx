@@ -217,8 +217,8 @@ const HeroSection = ({ className }: HeroSectionProps) => {
               whileTap="tap"
             >
               <Button
-              text={cta?.primaryButton.text || "Start a Project"}
-              className="px-8 py-4 rounded-full bg-linear-to-r from-primary to-secondary hover:opacity-90 text-white font-medium shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-shadow"
+                text={cta?.primaryButton.text || "Start a Project"}
+                className="px-8 py-4 rounded-full bg-linear-to-r from-primary to-secondary hover:opacity-90 text-white font-medium shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-shadow"
                 onClick={() => {
                   document
                     .querySelector(cta?.primaryButton.href || "#contact")
@@ -235,8 +235,8 @@ const HeroSection = ({ className }: HeroSectionProps) => {
               >
                 <Button
                   variant="outline"
-                text={cta.secondaryButton.text}
-                className="px-8 py-4 rounded-full border-border hover:border-primary/50 hover:bg-primary-light transition-all"
+                  text={cta.secondaryButton.text}
+                  className="px-8 py-4 rounded-full border-border hover:border-primary/50 hover:bg-primary-light transition-all"
                   onClick={() => {
                     document
                       .querySelector(cta.secondaryButton!.href || "#projects")
