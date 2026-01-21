@@ -4,8 +4,6 @@ import {
   IdentityStatement,
   CapabilityFlow,
   AboutSection,
-  TechExpertise,
-  ContactSection,
   Footer,
 } from "@/components/ui-components";
 
@@ -27,12 +25,6 @@ export default function Home() {
 
         {/* 4. How We Think - Architecture Mindset */}
         <AboutSection />
-
-        {/* 5. Trust - Technologies & Expertise */}
-        <TechExpertise />
-
-        {/* 6. Contact - Initialize Connection */}
-        <ContactSection />
       </main>
       <Footer />
     </>

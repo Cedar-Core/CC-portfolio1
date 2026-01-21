@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Icon } from "@/components/ui";
 
 interface EntrySectionProps {
@@ -162,9 +163,23 @@ const EntrySection = ({ className }: EntrySectionProps) => {
         <h1 className="heading-xl text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
           <span className="text-primary">Cedar</span> Core
         </h1>
-        <p className="text-foreground-muted text-sm md:text-base max-w-md mx-auto">
+        <p className="text-foreground-muted text-sm md:text-base max-w-md mx-auto mb-8">
           Systems architecture for ambitious software
         </p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isLoaded ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 2.2, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <Link
+            href="/ecosystem"
+            className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-linear-to-r from-primary to-secondary text-white font-semibold text-sm shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all hover:scale-105"
+          >
+            <span>Explore our ecosystem</span>
+            <Icon name="MoveRight" size={18} className="transition-transform group-hover:translate-x-1" />
+          </Link>
+        </motion.div>
       </motion.div>
 
       {/* Scroll indicator */}
