@@ -5,3 +5,4 @@ export { default as SectionWrapper } from "./SectionWrapper";
 export { default as SectionHeader } from "./SectionHeader";
 export { default as GlitchBackground } from "./GlitchBackground";
 export { default as SystemBackground } from "./SystemBackground";
+export { default as TypewriterText } from "./TypewriterText";

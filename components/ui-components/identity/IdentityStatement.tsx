@@ -3,15 +3,36 @@
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import ProductShowcase from "./ProductShowcase";
+import { TypewriterText } from "@/components/ui-components/shared";
 
 interface IdentityStatementProps {
   className?: string;
 }
 
+// Word lists for typewriter animation
+// To change words: simply modify these arrays
+const SYSTEM_WORDS = [
+  "systems",
+  "infrastructure",
+  "foundations",
+  "core layers",
+  "architectures",
+  "platforms",
+];
+
+const DEPENDS_WORDS = [
+  "depends on.",
+  "runs on.",
+  "is built on.",
+  "is powered by.",
+  "is anchored to.",
+];
+
 /**
  * IdentityStatement — "Core Signal"
  * Short, sharp, confident. No marketing fluff.
  * Large typography with structural accent lines.
+ * Features animated typewriter text for key phrases.
  */
 const IdentityStatement = ({ className }: IdentityStatementProps) => {
   return (
@@ -29,7 +50,7 @@ const IdentityStatement = ({ className }: IdentityStatementProps) => {
           style={{ transformOrigin: "left" }}
         />
 
-        {/* Main statement */}
+        {/* Main statement with animated words */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -38,9 +59,22 @@ const IdentityStatement = ({ className }: IdentityStatementProps) => {
         >
           <h2 className="heading-xl text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-foreground leading-tight mb-8">
             We build the{" "}
-            <span className="text-primary text-glow-subtle">systems</span>
+            <TypewriterText
+              words={SYSTEM_WORDS}
+              className="text-primary text-glow-subtle"
+              typingSpeed={70}
+              deletingSpeed={40}
+              pauseDuration={1800}
+            />
             <br className="hidden md:block" /> that other software{" "}
-            <span className="text-primary text-glow-subtle">depends on.</span>
+            <TypewriterText
+              words={DEPENDS_WORDS}
+              className="text-primary text-glow-subtle"
+              typingSpeed={70}
+              deletingSpeed={40}
+              pauseDuration={1800}
+              showCursor={false}
+            />
           </h2>
         </motion.div>
 
@@ -54,7 +88,6 @@ const IdentityStatement = ({ className }: IdentityStatementProps) => {
         >
           Backend-first. Architecture-driven. Built to last.
         </motion.p>
-
       </div>
 
       {/* Background accent glow */}
@@ -65,9 +98,9 @@ const IdentityStatement = ({ className }: IdentityStatementProps) => {
             "radial-gradient(ellipse at right center, rgba(93, 158, 255, 0.05) 0%, transparent 60%)",
         }}
       />
-      
-        {/* 2.5. Product Showcase - Systems We've Built */}
-        <ProductShowcase />
+
+      {/* 2.5. Product Showcase - Systems We've Built */}
+      <ProductShowcase />
     </section>
   );
 };
