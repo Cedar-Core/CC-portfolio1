@@ -106,11 +106,11 @@ const GlitchBackground = ({
             0,
             particle.x,
             particle.y,
-            particle.size * 3
+            particle.size * 3,
           );
           gradient.addColorStop(
             0,
-            `${particle.color}${particle.opacity * 0.3})`
+            `${particle.color}${particle.opacity * 0.3})`,
           );
           gradient.addColorStop(1, `${particle.color}0)`);
           ctx.fillStyle = gradient;
@@ -133,11 +133,11 @@ const GlitchBackground = ({
     <div
       className={cn(
         "fixed inset-0 z-0 pointer-events-none overflow-hidden",
-        className
+        className,
       )}
     >
       {/* Base gradient */}
-      <div className="absolute inset-0 bg-[#031128]" />
+      <div className="absolute inset-0 bg-[#050508]" />
 
       {/* Radial glow effects */}
       <div className="absolute top-1/4 left-1/4 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,_rgba(93,158,255,0.15)_0%,_transparent_60%)] blur-3xl" />
@@ -202,7 +202,7 @@ const GlitchBackground = ({
       />
 
       {/* Vignette effect */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(3,17,40,0.4)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(5,5,8,0.6)_100%)]" />
     </div>
   );
 };

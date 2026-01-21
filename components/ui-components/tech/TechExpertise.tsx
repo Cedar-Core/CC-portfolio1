@@ -1,112 +1,150 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import {
-  SectionHeader,
-  SectionWrapper,
-} from "@/components/ui-components/shared";
+import { SectionWrapper } from "@/components/ui-components/shared";
 import { Icon } from "@/components/ui";
-import { motion } from "@/components/ui/motion";
-import {
-  staggerReveal,
-  staggerRevealItem,
-} from "@/components/ui/motion-variants";
-import { getTechnologies } from "@/config/helpers";
+import { motion } from "framer-motion";
 
 interface TechExpertiseProps {
   className?: string;
 }
 
-const TechExpertise = ({ className }: TechExpertiseProps) => {
-  const technologies = getTechnologies();
-  return (
-    <SectionWrapper
-      id="technologies"
-      variant="alternate"
-      className={cn("relative", className)}
-    >
-      {/* Background accent */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,_var(--primary-light)_0%,_transparent_70%)] opacity-20 pointer-events-none" />
+const techStack = [
+  { name: "React", category: "Frontend" },
+  { name: "Next.js", category: "Frontend" },
+  { name: "TypeScript", category: "Language" },
+  { name: "Node.js", category: "Backend" },
+  { name: "Python", category: "Backend" },
+  { name: "PostgreSQL", category: "Database" },
+  { name: "MongoDB", category: "Database" },
+  { name: "AWS", category: "Cloud" },
+  { name: "Docker", category: "DevOps" },
+  { name: "Kubernetes", category: "DevOps" },
+  { name: "GraphQL", category: "API" },
+  { name: "Redis", category: "Cache" },
+];
 
-      <SectionHeader
-        label="Tech Stack"
-        title="Technologies We Master"
-        description="We leverage cutting-edge technologies to build robust, scalable, and maintainable solutions for your business."
+/**
+ * TechExpertise — "Trust / Signal Clarity"
+ * Trust through design restraint, not logos or testimonials.
+ * Clean metrics, technology mastery, structural confidence.
+ */
+const TechExpertise = ({ className }: TechExpertiseProps) => {
+  return (
+    <SectionWrapper id="expertise" className={cn("relative", className)}>
+      {/* Background accent */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(93, 158, 255, 0.04) 0%, transparent 60%)",
+        }}
       />
 
-      {/* Technology Grid */}
+      {/* Section header */}
       <motion.div
+        className="text-center mb-20"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <div className="w-8 h-px bg-linear-to-r from-transparent to-primary" />
+          <span className="text-xs font-mono text-primary uppercase tracking-widest">
+            Expertise
+          </span>
+          <div className="w-8 h-px bg-linear-to-l from-transparent to-primary" />
+        </div>
+        <h2 className="heading-lg text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
+          Technologies We Master
+        </h2>
+        <p className="text-foreground-muted max-w-xl mx-auto">
+          A focused stack, deeply understood.
+        </p>
+      </motion.div>
+
+      {/* Tech grid - Clean, minimal */}
+      <motion.div
+        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={staggerReveal}
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
+        viewport={{ once: true }}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.05 },
+          },
+        }}
       >
-        {technologies.map((tech) => (
+        {techStack.map((tech, index) => (
           <motion.div
             key={tech.name}
-            variants={staggerRevealItem}
-            whileHover={{ y: -8, scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            className="group relative"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            className="group"
           >
-            <div className="flex flex-col items-center p-6 rounded-2xl glass-card hover:border-primary/50 transition-all h-full hover-glow">
-              {/* Icon with glow */}
-              <div className="relative w-14 h-14 rounded-xl bg-linear-to-br from-primary/20 to-secondary/10 flex items-center justify-center mb-4 group-hover:from-primary/30 group-hover:to-secondary/20 transition-all">
-                <div className="absolute inset-0 rounded-xl bg-primary/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity" />
-                <Icon
-                  name={tech.icon}
-                  size={28}
-                  className="text-primary relative z-10"
-                />
+            <div className="flex flex-col items-center p-5 rounded-xl system-card hover:border-primary/30 transition-all duration-300 h-full">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
+                <Icon name="Code" size={20} className="text-primary" />
               </div>
-
-              {/* Name */}
-              <h3 className="font-bold text-foreground text-center mb-1 group-hover:text-primary transition-colors">
+              <span className="font-medium text-foreground text-sm text-center group-hover:text-primary transition-colors">
                 {tech.name}
-              </h3>
-
-              {/* Category */}
-              <span className="text-xs text-foreground-muted font-mono">
+              </span>
+              <span className="text-xs text-foreground-muted mt-1">
                 {tech.category}
               </span>
-
-              {/* Experience badge - appears on hover */}
-              <div className="absolute -top-2 -right-2 px-2.5 py-1 rounded-full bg-linear-to-r from-primary to-secondary text-white text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity shadow-lg shadow-primary/30">
-                {tech.years}+ yrs
-              </div>
             </div>
           </motion.div>
         ))}
       </motion.div>
 
-      {/* Additional tech categories */}
+      {/* Expertise metrics - Clean, no fake stats */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        className="mt-20 grid md:grid-cols-3 gap-8"
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ delay: 0.4 }}
-        className="mt-12"
+        transition={{ duration: 0.6, delay: 0.3 }}
       >
-        <div className="flex flex-wrap justify-center gap-3">
-          {[
-            "CI/CD Pipelines",
-            "Microservices",
-            "REST APIs",
-            "WebSockets",
-            "OAuth 2.0",
-            "Unit Testing",
-            "E2E Testing",
-            "Agile/Scrum",
-          ].map((item) => (
-            <span
-              key={item}
-              className="px-4 py-2 rounded-full bg-surface border border-border/50 text-sm text-foreground-muted hover:text-foreground hover:border-primary/30 transition-colors cursor-default"
-            >
-              {item}
-            </span>
-          ))}
+        <div className="text-center p-6 rounded-xl system-card">
+          <div className="text-3xl font-display font-medium text-primary mb-2">
+            5+
+          </div>
+          <div className="text-sm text-foreground-muted">
+            Years Building Software
+          </div>
         </div>
+        <div className="text-center p-6 rounded-xl system-card">
+          <div className="text-3xl font-display font-medium text-primary mb-2">
+            Full Stack
+          </div>
+          <div className="text-sm text-foreground-muted">
+            End-to-End Delivery
+          </div>
+        </div>
+        <div className="text-center p-6 rounded-xl system-card">
+          <div className="text-3xl font-display font-medium text-primary mb-2">
+            Production
+          </div>
+          <div className="text-sm text-foreground-muted">
+            Battle-Tested Systems
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Structural line */}
+      <motion.div
+        className="mt-16 flex items-center justify-center"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.5 }}
+      >
+        <div className="w-full max-w-md h-px bg-linear-to-r from-transparent via-border to-transparent" />
       </motion.div>
     </SectionWrapper>
   );

@@ -1,52 +1,38 @@
 import {
   Navbar,
-  HeroSection,
-  ServicesSection,
-  TechExpertise,
-  ProjectsSection,
-  ProcessSection,
-  ClientsSection,
+  EntrySection,
+  IdentityStatement,
+  CapabilityFlow,
   AboutSection,
+  TechExpertise,
   ContactSection,
   Footer,
 } from "@/components/ui-components";
-import { GlitchBackground } from "@/components/ui-components/shared";
+import { SystemBackground } from "@/components/ui-components/shared";
 
 export default function Home() {
   return (
     <>
-      {/* Cinematic glitch background effect */}
-      <GlitchBackground
-        intensity="medium"
-        showGrid
-        showParticles
-        showScanlines
-      />
+      {/* Atmospheric background - Deep, layered */}
 
       <Navbar />
       <main className="relative z-10">
-        {/* Hero - Value proposition with capabilities preview */}
-        <HeroSection />
+        {/* 1. Entry State - System Awakening */}
+        <EntrySection />
 
-        {/* Services - What we offer */}
-        <ServicesSection />
+        {/* 2. Identity Statement - Core Signal */}
+        <IdentityStatement />
 
-        {/* Tech Expertise - Technology grid */}
-        <TechExpertise />
+        {/* 3. What We Do - Capability Flow */}
+        <CapabilityFlow />
 
-        {/* Case Studies - Projects with challenge/solution/result */}
-        <ProjectsSection />
-
-        {/* Process - How we work timeline */}
-        <ProcessSection />
-
-        {/* Clients & Testimonials */}
-        <ClientsSection />
-
-        {/* About - Company values and principles */}
+        {/* 4. How We Think - Architecture Mindset */}
         <AboutSection />
 
-        {/* Contact - Get in touch form */}
+        {/* 5. Trust - Technologies & Expertise */}
+        <TechExpertise />
+
+        {/* 6. Contact - Initialize Connection */}
         <ContactSection />
       </main>
       <Footer />

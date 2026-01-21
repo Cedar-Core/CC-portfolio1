@@ -139,8 +139,8 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         scrolled
-          ? "bg-[#031128]/70 backdrop-blur-2xl shadow-lg shadow-primary/5 border-b border-primary/10"
-          : "bg-transparent"
+          ? "bg-[#050508]/80 backdrop-blur-2xl shadow-lg shadow-primary/5 border-b border-primary/10"
+          : "bg-transparent",
       )}
     >
       {/* Gradient line at top when scrolled */}
@@ -200,7 +200,7 @@ const Navbar = () => {
                     "relative px-3 py-2 text-sm transition-colors rounded-md cursor-pointer",
                     activeSection === link.href
                       ? "text-foreground font-medium"
-                      : "text-foreground-muted hover:text-foreground"
+                      : "text-foreground-muted hover:text-foreground",
                   )}
                 >
                   {link.label}
@@ -250,7 +250,7 @@ const Navbar = () => {
               "md:hidden p-2 rounded-lg transition-colors z-50",
               isOpen
                 ? "bg-primary/10 text-primary"
-                : "text-foreground-secondary dark:text-foreground-muted hover:bg-surface"
+                : "text-foreground-secondary dark:text-foreground-muted hover:bg-surface",
             )}
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
@@ -294,7 +294,7 @@ const Navbar = () => {
                         "flex items-center gap-3 py-3 px-4 rounded-xl text-lg font-medium transition-all w-full text-left",
                         activeSection === link.href
                           ? "bg-primary/10 text-primary"
-                          : "text-foreground-secondary hover:bg-surface hover:text-foreground dark:text-foreground-muted dark:hover:text-white"
+                          : "text-foreground-secondary hover:bg-surface hover:text-foreground dark:text-foreground-muted dark:hover:text-white",
                       )}
                     >
                       {activeSection === link.href && (

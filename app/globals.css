@@ -1,66 +1,22 @@
 @import "tailwindcss";
 
 /* ============================================================================
-   CEDAR CORE - Modern Software Company Design System
-   Inspired by Railway's clarity, tailored for Cedar Core's identity
+   CEDAR CORE — REFINED DESIGN SYSTEM
+   A systems company aesthetic: structural, atmospheric, engineered
    ============================================================================ */
 
 :root {
-  /* Light Mode - Derived from brand colors */
-  --background: #f8fafc;
-  --background-secondary: #ffffff;
-  --background-tertiary: #f1f5f9;
-  --foreground: #031128;
-  --foreground-secondary: #334155;
-  --foreground-muted: #64748b;
+  /* Core Background - Near black, minimal blue tint */
+  --background: #050508;
+  --background-secondary: #0a0a10;
+  --background-tertiary: #0f0f18;
   
-  /* Brand Colors - Core Palette */
-  --primary: #5D9EFF;
-  --primary-hover: #4A8FE7;
-  --primary-light: rgba(93, 158, 255, 0.12);
-  --primary-glow: rgba(93, 158, 255, 0.25);
-  --secondary: #525FF9;
-  --secondary-hover: #424FE9;
-  --secondary-light: rgba(82, 95, 249, 0.12);
-  --secondary-glow: rgba(82, 95, 249, 0.25);
-  
-  /* Cedar Theme - Organic accents */
-  --cedar: #2D5A27;
-  --cedar-light: rgba(45, 90, 39, 0.1);
-  --cedar-glow: rgba(45, 90, 39, 0.2);
-  
-  /* Gradient definitions */
-  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  --gradient-subtle: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
-  --gradient-glow: radial-gradient(ellipse at center, var(--primary-glow) 0%, transparent 70%);
-  
-  /* Borders & Surfaces */
-  --border: #e2e8f0;
-  --border-hover: #cbd5e1;
-  --border-subtle: rgba(0, 0, 0, 0.06);
-  --surface: #ffffff;
-  --surface-hover: #f8fafc;
-  --surface-elevated: #ffffff;
-  
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
-  --shadow-glow: 0 0 40px var(--primary-glow);
-}
-
-/* Dark Mode - Primary Experience (Dark-first) */
-.dark,
-:root {
-  /* Dark Mode - Core brand background */
-  --background: #031128;
-  --background-secondary: #051a35;
-  --background-tertiary: #071f40;
+  /* Foreground - Clear hierarchy */
   --foreground: #f1f5f9;
   --foreground-secondary: #cbd5e1;
   --foreground-muted: #94a3b8;
   
-  /* Brand Colors */
+  /* Brand Colors - Strict palette */
   --primary: #5D9EFF;
   --primary-hover: #7DB3FF;
   --primary-light: rgba(93, 158, 255, 0.12);
@@ -70,17 +26,21 @@
   --secondary-light: rgba(82, 95, 249, 0.12);
   --secondary-glow: rgba(82, 95, 249, 0.4);
   
-  /* Neon accent colors */
-  --neon-blue: #00D4FF;
-  --neon-purple: #7B61FF;
-  --neon-glow: 0 0 20px rgba(93, 158, 255, 0.5), 0 0 40px rgba(93, 158, 255, 0.3);
+  /* Energy/Glow colors */
+  --energy-blue: rgba(93, 158, 255, 0.6);
+  --energy-purple: rgba(82, 95, 249, 0.5);
   
-  /* Cedar Theme */
+  /* Cedar accent */
   --cedar: #4ADE80;
   --cedar-light: rgba(74, 222, 128, 0.1);
   --cedar-glow: rgba(74, 222, 128, 0.2);
   
-  /* Borders & Surfaces - Glass effect */
+  /* Gradient definitions */
+  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  --gradient-subtle: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary-light) 100%);
+  --gradient-glow: radial-gradient(ellipse at center, var(--primary-glow) 0%, transparent 70%);
+  
+  /* Borders & Surfaces */
   --border: rgba(93, 158, 255, 0.12);
   --border-hover: rgba(93, 158, 255, 0.25);
   --border-subtle: rgba(93, 158, 255, 0.06);
@@ -88,36 +48,12 @@
   --surface-hover: rgba(255, 255, 255, 0.05);
   --surface-elevated: rgba(255, 255, 255, 0.04);
   
-  /* Shadows for dark mode */
+  /* Shadows */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
   --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.5), 0 4px 10px -2px rgba(0, 0, 0, 0.4);
   --shadow-glow: 0 0 60px var(--primary-glow);
   --shadow-neon: 0 0 20px rgba(93, 158, 255, 0.4), 0 0 40px rgba(93, 158, 255, 0.2);
-}
-
-/* Light mode override when system prefers light */
-@media (prefers-color-scheme: light) {
-  :root:not(.dark) {
-    --background: #f8fafc;
-    --background-secondary: #ffffff;
-    --background-tertiary: #f1f5f9;
-    --foreground: #031128;
-    --foreground-secondary: #334155;
-    --foreground-muted: #64748b;
-    --border: #e2e8f0;
-    --border-hover: #cbd5e1;
-    --border-subtle: rgba(0, 0, 0, 0.06);
-    --surface: #ffffff;
-    --surface-hover: #f8fafc;
-    --surface-elevated: #ffffff;
-    --cedar: #2D5A27;
-    --cedar-light: rgba(45, 90, 39, 0.1);
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
-    --shadow-glow: 0 0 40px var(--primary-glow);
-  }
 }
 
 @theme inline {
@@ -135,8 +71,6 @@
   --color-secondary-hover: var(--secondary-hover);
   --color-secondary-light: var(--secondary-light);
   --color-secondary-glow: var(--secondary-glow);
-  --color-neon-blue: var(--neon-blue);
-  --color-neon-purple: var(--neon-purple);
   --color-cedar: var(--cedar);
   --color-cedar-light: var(--cedar-light);
   --color-border: var(--border);
@@ -147,6 +81,7 @@
   --color-surface-elevated: var(--surface-elevated);
   --font-sans: var(--font-poppins);
   --font-mono: var(--font-jetbrains-mono);
+  --font-display: var(--font-oswald);
 }
 
 /* ============================================================================
@@ -266,7 +201,7 @@ body {
 
 /* Floating panel - Elevated glass effect */
 .floating-panel {
-  background: linear-gradient(180deg, rgba(5, 26, 53, 0.8) 0%, rgba(3, 17, 40, 0.9) 100%);
+  background: linear-gradient(180deg, rgba(10, 10, 16, 0.9) 0%, rgba(5, 5, 8, 0.95) 100%);
   backdrop-filter: blur(24px);
   border: 1px solid rgba(93, 158, 255, 0.15);
   box-shadow: 
@@ -495,4 +430,268 @@ button:focus-visible,
 a:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
+}
+
+/* ============================================================================
+   TYPOGRAPHY SYSTEM — Oswald for display, Poppins for body
+   ============================================================================ */
+
+.font-display {
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.font-body {
+  font-family: var(--font-poppins), 'Poppins', sans-serif;
+}
+
+/* Display heading styles */
+.heading-xl {
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+.heading-lg {
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+}
+
+/* ============================================================================
+   CORE NODE — Central animated element
+   ============================================================================ */
+
+.core-node {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--primary) 0%, var(--secondary) 100%);
+  box-shadow: 
+    0 0 60px var(--primary-glow),
+    0 0 120px var(--secondary-glow),
+    inset 0 0 30px rgba(255, 255, 255, 0.1);
+  animation: core-pulse 4s ease-in-out infinite;
+}
+
+.core-node::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0%, var(--primary) 25%, transparent 50%, var(--secondary) 75%, transparent 100%);
+  animation: core-rotate 8s linear infinite;
+  opacity: 0.4;
+}
+
+.core-node::after {
+  content: '';
+  position: absolute;
+  inset: 20%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+}
+
+@keyframes core-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 
+      0 0 60px var(--primary-glow),
+      0 0 120px var(--secondary-glow);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 
+      0 0 80px var(--primary-glow),
+      0 0 160px var(--secondary-glow);
+  }
+}
+
+@keyframes core-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================================
+   ENERGY PATHS — Connection lines
+   ============================================================================ */
+
+.energy-path {
+  stroke: url(#energy-gradient);
+  stroke-width: 1;
+  fill: none;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 4px var(--primary-glow));
+}
+
+.energy-path-animated {
+  stroke-dasharray: 8 4;
+  animation: energy-flow 2s linear infinite;
+}
+
+@keyframes energy-flow {
+  from { stroke-dashoffset: 24; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* ============================================================================
+   CAPABILITY NODE — For capability flow diagram
+   ============================================================================ */
+
+.capability-node {
+  position: relative;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, rgba(93, 158, 255, 0.08) 0%, rgba(82, 95, 249, 0.04) 100%);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.capability-node:hover {
+  background: linear-gradient(135deg, rgba(93, 158, 255, 0.12) 0%, rgba(82, 95, 249, 0.08) 100%);
+  border-color: var(--border-hover);
+  box-shadow: 
+    0 0 30px rgba(93, 158, 255, 0.15),
+    0 10px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px);
+}
+
+.capability-node::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  width: 20px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.capability-node:hover::before {
+  opacity: 1;
+}
+
+/* ============================================================================
+   STRUCTURAL ELEMENTS — Lines, dividers, accents
+   ============================================================================ */
+
+.structural-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+.structural-line-vertical {
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--border), transparent);
+}
+
+.accent-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 12px var(--primary-glow);
+}
+
+.accent-dot-pulse {
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.2); }
+}
+
+/* ============================================================================
+   ATMOSPHERIC LAYERS — Background depth
+   ============================================================================ */
+
+.atmosphere-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.atmosphere-glow-1 {
+  background: radial-gradient(ellipse 80% 50% at 20% 20%, rgba(93, 158, 255, 0.08) 0%, transparent 60%);
+}
+
+.atmosphere-glow-2 {
+  background: radial-gradient(ellipse 60% 40% at 80% 80%, rgba(82, 95, 249, 0.06) 0%, transparent 60%);
+}
+
+.atmosphere-glow-3 {
+  background: radial-gradient(ellipse 100% 60% at 50% 50%, rgba(93, 158, 255, 0.04) 0%, transparent 50%);
+}
+
+/* ============================================================================
+   SECTION SPACING — Consistent rhythm
+   ============================================================================ */
+
+.section-spacing {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+@media (min-width: 768px) {
+  .section-spacing {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+}
+
+/* ============================================================================
+   SCROLL INDICATOR — Proceed signal
+   ============================================================================ */
+
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.6;
+  animation: scroll-hint 2s ease-in-out infinite;
+}
+
+.scroll-indicator-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, var(--primary), transparent);
+}
+
+@keyframes scroll-hint {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(8px); opacity: 0.4; }
+}
+
+/* ============================================================================
+   REFINED GLASS CARD — Less generic
+   ============================================================================ */
+
+.system-card {
+  background: linear-gradient(135deg, rgba(10, 10, 16, 0.8) 0%, rgba(5, 5, 8, 0.9) 100%);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  backdrop-filter: blur(12px);
+}
+
+.system-card:hover {
+  border-color: var(--border-hover);
+}
+
+/* ============================================================================
+   TEXT GLOW — Refined, not overdone
+   ============================================================================ */
+
+.text-glow {
+  text-shadow: 0 0 20px var(--primary-glow), 0 0 40px rgba(93, 158, 255, 0.2);
+}
+
+.text-glow-subtle {
+  text-shadow: 0 0 10px rgba(93, 158, 255, 0.3);
 }

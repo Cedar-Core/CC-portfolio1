@@ -13,3 +13,8 @@ export { ExperienceTimeline } from "./experience";
 export { TechExpertise } from "./tech";
 export { ClientsSection } from "./clients";
 export { ProcessSection } from "./process";
+
+// New Cedar Core sections
+export { EntrySection } from "./entry";
+export { IdentityStatement, ProductShowcase } from "./identity";
+export { CapabilityFlow } from "./capabilities";

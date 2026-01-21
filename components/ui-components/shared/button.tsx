@@ -1,6 +1,6 @@
 "use client";
 
-import { SButton } from "@/components/ui/button";
+import { Button as SButton } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Icon from "@/components/ui/icon";
 
