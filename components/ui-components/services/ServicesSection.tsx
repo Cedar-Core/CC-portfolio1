@@ -118,7 +118,7 @@ const ServicesSection = ({ className }: ServicesSectionProps) => {
               Need a custom solution?
             </p>
             <p className="text-sm text-foreground-muted">
-              Let's discuss your specific requirements.
+              Let&apos;s discuss your specific requirements.
             </p>
           </div>
           <motion.a

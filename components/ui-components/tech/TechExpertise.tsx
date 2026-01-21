@@ -78,7 +78,7 @@ const TechExpertise = ({ className }: TechExpertiseProps) => {
           },
         }}
       >
-        {techStack.map((tech, index) => (
+        {techStack.map((tech) => (
           <motion.div
             key={tech.name}
             variants={{

@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 interface TypewriterTextProps {
   /** Array of words/phrases to cycle through */
@@ -43,7 +42,7 @@ const TypewriterText = ({
   enabled = true,
 }: TypewriterTextProps) => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState("");
+  const [displayedText, setDisplayedText] = useState(enabled ? "" : words[0]);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -93,7 +92,6 @@ const TypewriterText = ({
 
   useEffect(() => {
     if (!enabled) {
-      setDisplayedText(words[0]);
       return;
     }
 
@@ -101,7 +99,7 @@ const TypewriterText = ({
     const timer = setTimeout(tick, speed);
 
     return () => clearTimeout(timer);
-  }, [tick, isDeleting, typingSpeed, deletingSpeed, enabled, words]);
+  }, [tick, isDeleting, typingSpeed, deletingSpeed, enabled]);
 
   // If animation is disabled, just show the first word
   if (!enabled) {

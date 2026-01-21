@@ -119,7 +119,7 @@ const ProcessSection = ({ className }: ProcessSectionProps) => {
         className="mt-16 text-center"
       >
         <p className="text-foreground-muted mb-4">
-          Ready to start your project? Let's discuss your requirements.
+          Ready to start your project? Let&apos;s discuss your requirements.
         </p>
         <motion.a
           href="#contact"

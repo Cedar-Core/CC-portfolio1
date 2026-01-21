@@ -37,7 +37,7 @@ const ClientsSection = ({ className }: ClientsSectionProps) => {
           Companies That <span className="gradient-text">Trust Us</span>
         </h2>
         <p className="text-foreground-muted max-w-2xl mx-auto">
-          From startups to enterprises, we've helped businesses across
+          From startups to enterprises, we&apos;ve helped businesses across
           industries build software that drives results.
         </p>
       </motion.div>
@@ -106,7 +106,7 @@ const ClientsSection = ({ className }: ClientsSectionProps) => {
 
             {/* Quote text */}
             <p className="text-foreground-muted leading-relaxed mt-4 mb-6 text-sm">
-              "{testimonial.quote}"
+              &ldquo;{testimonial.quote}&rdquo;
             </p>
 
             {/* Author */}

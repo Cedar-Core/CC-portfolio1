@@ -74,7 +74,7 @@ import {
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 // Export Shad molecules
-export { SButton, buttonVariants } from "@/components/ui/button";
+export { Button, buttonVariants } from "@/components/ui/button";
 export { default as Input } from "@/components/ui/input";
 export { Label } from "@/components/ui/label";
 export { default as Textarea } from "@/components/ui/textarea";

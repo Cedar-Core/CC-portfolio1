@@ -8,7 +8,6 @@ import {
   ContactSection,
   Footer,
 } from "@/components/ui-components";
-import { SystemBackground } from "@/components/ui-components/shared";
 
 export default function Home() {
   return (
