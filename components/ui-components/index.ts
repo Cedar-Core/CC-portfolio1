@@ -10,7 +10,6 @@ export { SkillsSection } from "./skills";
 export { ExperienceTimeline } from "./experience";
 
 // New QArea-inspired sections
-export { TechExpertise } from "./tech";
 export { ClientsSection } from "./clients";
 export { ProcessSection } from "./process";
 
@@ -18,3 +17,6 @@ export { ProcessSection } from "./process";
 export { EntrySection } from "./entry";
 export { IdentityStatement, ProductShowcase } from "./identity";
 export { CapabilityFlow } from "./capabilities";
+
+// Ecosystem page sections
+export * from "./ecosystem";

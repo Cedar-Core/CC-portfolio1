@@ -24,8 +24,8 @@ export const config: PortfolioConfig = {
       {
         type: "email",
         label: "Email",
-        value: "hello@cedarcore.dev",
-        href: "mailto:hello@cedarcore.dev",
+        value: "contact@cedar-core.com",
+        href: "mailto:contact@cedar-core.com",
         icon: "Mail",
       },
       {
@@ -1197,7 +1197,8 @@ export const config: PortfolioConfig = {
       { label: "About", href: "#about", order: 2 },
       { label: "Services", href: "#services", order: 3 },
       { label: "Projects", href: "#projects", order: 4 },
-      { label: "Contact", href: "#contact", order: 5 },
+      { label: "Ecosystem", href: "/ecosystem", order: 5 },
+      { label: "Contact", href: "/contact", order: 6 },
     ],
     footer: {
       sections: [
@@ -1216,7 +1217,7 @@ export const config: PortfolioConfig = {
             { label: "About Us", href: "#about", order: 1 },
             { label: "Our Work", href: "#projects", order: 2 },
             { label: "Careers", href: "/careers", order: 3 },
-            { label: "Contact", href: "#contact", order: 4 },
+            { label: "Contact", href: "/contact", order: 4 },
           ],
         },
         {

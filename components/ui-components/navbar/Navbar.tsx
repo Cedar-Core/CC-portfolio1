@@ -45,7 +45,6 @@ const Navbar = () => {
         "projects",
         "skills",
         "experience",
-        "contact",
       ];
       const scrollPosition = window.scrollY + 100;
 
@@ -100,6 +99,14 @@ const Navbar = () => {
 
   const handleNavClick = useCallback((href: string) => {
     setIsOpen(false);
+
+    // If it's a route (not a hash link), use Next.js router
+    if (!href.startsWith("#")) {
+      window.location.href = href;
+      return;
+    }
+
+    // Otherwise, scroll to section
     const element = document.getElementById(href.replace("#", ""));
     element?.scrollIntoView({ behavior: "smooth" });
   }, []);
@@ -234,11 +241,12 @@ const Navbar = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Button
-                  text="Start a Project"
-                  className="rounded-full px-6 py-2.5 text-sm bg-linear-to-r from-primary to-secondary text-white font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all"
-                  onClick={() => handleNavClick("#contact")}
-                />
+                <Link href="/contact">
+                  <Button
+                    text="Start a Project"
+                    className="rounded-full px-6 py-2.5 text-sm bg-linear-to-r from-primary to-secondary text-white font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all"
+                  />
+                </Link>
               </motion.div>
             </motion.div>
           </div>
@@ -313,11 +321,12 @@ const Navbar = () => {
                   transition={{ delay: 0.3 }}
                   className="pt-4"
                 >
-                  <Button
-                    text="Get in Touch"
-                    className="w-full rounded-xl py-4 text-base shadow-lg shadow-primary/25"
-                    onClick={() => handleNavClick("#contact")}
-                  />
+                  <Link href="/contact">
+                    <Button
+                      text="Get in Touch"
+                      className="w-full rounded-xl py-4 text-base shadow-lg shadow-primary/25"
+                    />
+                  </Link>
                 </motion.div>
               </div>
             </motion.div>
