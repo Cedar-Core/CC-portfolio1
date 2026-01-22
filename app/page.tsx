@@ -6,6 +6,7 @@ import {
   AboutSection,
   Footer,
 } from "@/components/ui-components";
+import { PreFooterCTA } from "@/components/ui-components/footer";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         {/* 4. How We Think - Architecture Mindset */}
         <AboutSection />
       </main>
+      <PreFooterCTA />
       <Footer />
     </>
   );

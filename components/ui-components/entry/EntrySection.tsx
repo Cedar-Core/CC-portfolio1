@@ -185,30 +185,6 @@ const EntrySection = ({ className }: EntrySectionProps) => {
           </Link>
         </motion.div>
       </motion.div>
-
-      {/* Corner accents */}
-      <motion.div
-        className="absolute top-8 left-8 flex items-center gap-2"
-        initial={{ opacity: 0, x: -20 }}
-        animate={isLoaded ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.6, delay: 2 }}
-      >
-        <div className="accent-dot accent-dot-pulse" />
-        <span className="text-xs font-mono text-foreground-muted">
-          Systems Online
-        </span>
-      </motion.div>
-
-      <motion.div
-        className="absolute top-8 right-8 hidden md:flex items-center gap-2"
-        initial={{ opacity: 0, x: 20 }}
-        animate={isLoaded ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.6, delay: 2.2 }}
-      >
-        <span className="text-xs font-mono text-foreground-muted">v2.0</span>
-        <div className="w-px h-3 bg-border" />
-        <span className="text-xs font-mono text-primary">Production</span>
-      </motion.div>
     </section>
   );
 };
