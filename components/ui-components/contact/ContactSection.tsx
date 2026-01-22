@@ -5,7 +5,6 @@ import { SectionWrapper } from "@/components/ui-components/shared";
 import { Icon } from "@/components/ui";
 import ContactForm from "./ContactForm";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 interface ContactSectionProps {
   className?: string;
@@ -15,8 +14,8 @@ const contactInfo = [
   {
     icon: "Mail",
     label: "Email",
-    value: "contact@cedar-core.com",
-    href: "mailto:contact@cedar-core.com",
+    value: "hello@cedarcore.dev",
+    href: "mailto:hello@cedarcore.dev",
   },
   {
     icon: "Calendar",
@@ -26,46 +25,12 @@ const contactInfo = [
   },
 ];
 
-// Centralized timezone config (scalable & explicit)
-const TIMEZONE = {
-  label: "Beirut",
-  iana: "Asia/Beirut",
-};
-
+/**
+ * ContactSection — "Initialize Connection"
+ * Calm, confident CTA. System-like. No urgency, no pressure.
+ * Feels like "opening a channel".
+ */
 const ContactSection = ({ className }: ContactSectionProps) => {
-  const [currentTime, setCurrentTime] = useState("");
-  const [gmtOffset, setGmtOffset] = useState("");
-
-  useEffect(() => {
-    const timeFormatter = new Intl.DateTimeFormat("en-GB", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hourCycle: "h23",
-      timeZone: TIMEZONE.iana,
-    });
-
-    const offsetFormatter = new Intl.DateTimeFormat("en-US", {
-      timeZone: TIMEZONE.iana,
-      timeZoneName: "shortOffset",
-    });
-
-    const updateTime = () => {
-      const now = new Date();
-
-      setCurrentTime(timeFormatter.format(now));
-
-      // Example output: "GMT+2" / "GMT+3"
-      const parts = offsetFormatter.formatToParts(now);
-      const tzName = parts.find((p) => p.type === "timeZoneName")?.value ?? "";
-      setGmtOffset(tzName);
-    };
-
-    updateTime(); // initial
-    const interval = setInterval(updateTime, 60_000); // update every minute
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <SectionWrapper id="contact" className={cn("relative", className)}>
       {/* Background accent */}
@@ -92,9 +57,9 @@ const ContactSection = ({ className }: ContactSectionProps) => {
           </span>
           <div className="w-8 h-px bg-linear-to-l from-transparent to-primary" />
         </div>
-        <h1 className="heading-lg text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
+        <h2 className="heading-lg text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
           Start a Conversation
-        </h1>
+        </h2>
         <p className="text-foreground-muted max-w-xl mx-auto">
           Ready to build something? Let&apos;s discuss your project.
         </p>
@@ -152,7 +117,7 @@ const ContactSection = ({ className }: ContactSectionProps) => {
             ))}
           </div>
 
-          {/* Availability indicator */}
+          {/* Response time indicator */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -163,51 +128,12 @@ const ContactSection = ({ className }: ContactSectionProps) => {
             <div className="flex items-center gap-3 mb-3">
               <div className="w-2 h-2 rounded-full bg-cedar animate-pulse" />
               <span className="text-sm font-medium text-foreground">
-                Available Now
+                Quick Response
               </span>
             </div>
             <p className="text-sm text-foreground-muted">
-              Accepting new projects
+              We typically respond within 24 hours.
             </p>
-          </motion.div>
-
-          {/* Response time */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="p-5 rounded-xl system-card border-border/50"
-          >
-            <div className="flex items-start gap-3">
-              <div className="shrink-0 w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
-                <Icon name="Clock" size={16} className="text-primary" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-foreground mb-1">
-                  Quick Response
-                </p>
-                <p className="text-xs text-foreground-muted leading-relaxed">
-                  We typically respond within 24 hours during business days
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Timezone info */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="p-4 rounded-xl border border-border/30 bg-surface/20"
-          >
-            <div className="flex items-center justify-between text-xs font-mono">
-              <span className="text-foreground-muted">Timezone</span>
-              <span className="text-primary">
-                {TIMEZONE.label} ({gmtOffset}) · {currentTime}
-              </span>
-            </div>
           </motion.div>
         </motion.div>
       </div>

@@ -27,8 +27,8 @@ const EntrySection = ({ className }: EntrySectionProps) => {
   return (
     <section
       className={cn(
-        "relative min-h-screen flex flex-col items-center justify-center overflow-hidden",
-        className,
+        "relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-20",
+        className
       )}
     >
       {/* Energy paths SVG - Radiating from center */}
@@ -153,9 +153,9 @@ const EntrySection = ({ className }: EntrySectionProps) => {
         <div className="core-node" />
       </motion.div>
 
-      {/* Identity text - Appears last */}
+      {/* Identity text - Appears last, positioned below the core node */}
       <motion.div
-        className="absolute bottom-[20%] md:bottom-[25%] text-center px-6"
+        className="absolute top-[60%] text-center px-6 w-full"
         initial={{ opacity: 0, y: 30 }}
         animate={isLoaded ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, delay: 1.8, ease: [0.22, 1, 0.36, 1] }}
@@ -177,53 +177,13 @@ const EntrySection = ({ className }: EntrySectionProps) => {
             className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-linear-to-r from-primary to-secondary text-white font-semibold text-sm shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all hover:scale-105"
           >
             <span>Explore our ecosystem</span>
-            <Icon name="MoveRight" size={18} className="transition-transform group-hover:translate-x-1" />
+            <Icon
+              name="MoveRight"
+              size={18}
+              className="transition-transform group-hover:translate-x-1"
+            />
           </Link>
         </motion.div>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0 }}
-        animate={isLoaded ? { opacity: 1 } : {}}
-        transition={{ duration: 0.6, delay: 2.5 }}
-      >
-        <div className="scroll-indicator">
-          <span className="text-xs text-foreground-muted font-mono tracking-wider uppercase">
-            Explore
-          </span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Icon name="ChevronDown" size={16} className="text-primary" />
-          </motion.div>
-        </div>
-      </motion.div>
-
-      {/* Corner accents */}
-      <motion.div
-        className="absolute top-8 left-8 flex items-center gap-2"
-        initial={{ opacity: 0, x: -20 }}
-        animate={isLoaded ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.6, delay: 2 }}
-      >
-        <div className="accent-dot accent-dot-pulse" />
-        <span className="text-xs font-mono text-foreground-muted">
-          Systems Online
-        </span>
-      </motion.div>
-
-      <motion.div
-        className="absolute top-8 right-8 hidden md:flex items-center gap-2"
-        initial={{ opacity: 0, x: 20 }}
-        animate={isLoaded ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.6, delay: 2.2 }}
-      >
-        <span className="text-xs font-mono text-foreground-muted">v2.0</span>
-        <div className="w-px h-3 bg-border" />
-        <span className="text-xs font-mono text-primary">Production</span>
       </motion.div>
     </section>
   );
