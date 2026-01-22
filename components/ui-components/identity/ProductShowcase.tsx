@@ -80,30 +80,48 @@ const ProductShowcase = ({ className }: ProductShowcaseProps) => {
       </motion.div>
 
       {/* Carousel Container */}
-      <div className="relative">
+      <motion.div
+        className="relative"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+      >
         {/* Navigation Buttons */}
-        <button
+        <motion.button
           onClick={goToPrevious}
           className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-40 p-3 rounded-full bg-background/80 border border-border/50 backdrop-blur-sm hover:border-primary/50 hover:bg-primary/10 transition-all group"
           aria-label="Previous product"
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           <Icon
             name="ChevronLeft"
             className="w-5 h-5 text-foreground-muted group-hover:text-primary transition-colors"
           />
-        </button>
+        </motion.button>
 
-        <button
+        <motion.button
           onClick={goToNext}
           className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-40 p-3 rounded-full bg-background/80 border border-border/50 backdrop-blur-sm hover:border-primary/50 hover:bg-primary/10 transition-all group"
           aria-label="Next product"
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           <Icon
             name="ChevronRight"
             size={20}
             className="text-foreground-muted group-hover:text-primary transition-colors"
           />
-        </button>
+        </motion.button>
 
         {/* Carousel */}
         <Carousel
@@ -201,10 +219,16 @@ const ProductShowcase = ({ className }: ProductShowcaseProps) => {
         {/* Gradient Edges for Depth */}
         <div className="absolute inset-y-0 left-0 w-24 md:w-32 bg-linear-to-r from-background to-transparent pointer-events-none z-20" />
         <div className="absolute inset-y-0 right-0 w-24 md:w-32 bg-linear-to-l from-background to-transparent pointer-events-none z-20" />
-      </div>
+      </motion.div>
 
       {/* Active Product Title & Description */}
-      <div className="relative h-24 mt-8">
+      <motion.div
+        className="relative h-24 mt-8"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={activeIndex}
@@ -224,12 +248,18 @@ const ProductShowcase = ({ className }: ProductShowcaseProps) => {
             )}
           </motion.div>
         </AnimatePresence>
-      </div>
+      </motion.div>
 
       {/* Navigation Dots */}
-      <div className="flex items-center justify-center gap-3 mt-6">
+      <motion.div
+        className="flex items-center justify-center gap-3 mt-6"
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
         {products.map((product, index) => (
-          <button
+          <motion.button
             key={product.id}
             onClick={() => goToSlide(index)}
             className={cn(
@@ -239,6 +269,16 @@ const ProductShowcase = ({ className }: ProductShowcaseProps) => {
                 : "bg-foreground-muted/30 hover:bg-foreground-muted/50"
             )}
             aria-label={`Go to ${product.title}`}
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.3,
+              delay: 0.7 + index * 0.05,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
           >
             {index === activeIndex && (
               <motion.div
@@ -247,9 +287,9 @@ const ProductShowcase = ({ className }: ProductShowcaseProps) => {
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               />
             )}
-          </button>
+          </motion.button>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

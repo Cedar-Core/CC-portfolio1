@@ -17,6 +17,7 @@ export { ProcessSection } from "./process";
 export { EntrySection } from "./entry";
 export { IdentityStatement, ProductShowcase } from "./identity";
 export { CapabilityFlow } from "./capabilities";
+export { SystemArchitecture } from "./systems";
 
 // Ecosystem page sections
 export * from "./ecosystem";

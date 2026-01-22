@@ -11,22 +11,9 @@ interface IdentityStatementProps {
 
 // Word lists for typewriter animation
 // To change words: simply modify these arrays
-const SYSTEM_WORDS = [
-  "systems",
-  "infrastructure",
-  "foundations",
-  "core layers",
-  "architectures",
-  "platforms",
-];
+const SYSTEM_WORDS = ["systems", "core", "base", "engine", "backbone"];
 
-const DEPENDS_WORDS = [
-  "depends on.",
-  "runs on.",
-  "is built on.",
-  "is powered by.",
-  "is anchored to.",
-];
+const DEPENDS_WORDS = ["depends on.", "runs on.", "relies on.", "builds on."];
 
 /**
  * IdentityStatement — "Core Signal"
@@ -63,17 +50,17 @@ const IdentityStatement = ({ className }: IdentityStatementProps) => {
               words={SYSTEM_WORDS}
               className="text-primary text-glow-subtle"
               typingSpeed={70}
-              deletingSpeed={40}
+              deletingSpeed={60}
               pauseDuration={1800}
+              showCursor={false}
             />
             <br className="hidden md:block" /> that other software{" "}
             <TypewriterText
               words={DEPENDS_WORDS}
               className="text-primary text-glow-subtle"
               typingSpeed={70}
-              deletingSpeed={40}
+              deletingSpeed={60}
               pauseDuration={1800}
-              showCursor={false}
             />
           </h2>
         </motion.div>
