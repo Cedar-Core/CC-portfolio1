@@ -6,7 +6,8 @@ import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui";
 import { Button } from "@/components/ui-components/shared";
 import { getMainNavigation, getBranding } from "@/config/helpers";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import {
   motion,
   AnimatePresence,
@@ -18,9 +19,9 @@ import {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
   const [hidden, setHidden] = useState(false);
   const { scrollY } = useScroll();
+  const pathname = usePathname();
   const navLinks = getMainNavigation();
   const branding = getBranding();
 
@@ -35,45 +36,6 @@ const Navbar = () => {
     }
     setScrolled(latest > 20);
   });
-
-  // Track active section
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = [
-        "about",
-        "services",
-        "projects",
-        "skills",
-        "experience",
-        "contact",
-      ];
-      const scrollPosition = window.scrollY + 100;
-
-      let found = false;
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + offsetHeight
-          ) {
-            setActiveSection(`#${section}`);
-            found = true;
-            break;
-          }
-        }
-      }
-
-      if (!found || window.scrollY < 100) {
-        setActiveSection("");
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Call once on mount to set initial state
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Close mobile menu on escape key
   useEffect(() => {
@@ -97,12 +59,6 @@ const Navbar = () => {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
-
-  const handleNavClick = useCallback((href: string) => {
-    setIsOpen(false);
-    const element = document.getElementById(href.replace("#", ""));
-    element?.scrollIntoView({ behavior: "smooth" });
-  }, []);
 
   const navVariants: Variants = {
     visible: { y: 0, opacity: 1 },
@@ -179,6 +135,9 @@ const Navbar = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
               className="font-semibold text-foreground text-base"
+              style={{
+                fontFamily: "'oswald', sans-serif",
+              }}
             >
               {branding.name}
             </motion.span>
@@ -189,34 +148,37 @@ const Navbar = () => {
             {navLinks
               .filter((link) => link.href !== "/")
               .map((link, index) => (
-                <motion.button
+                <motion.div
                   key={link.href}
-                  onClick={() => handleNavClick(link.href)}
                   custom={index}
                   variants={linkVariants}
                   initial="initial"
                   animate="animate"
-                  className={cn(
-                    "relative px-3 py-2 text-sm transition-colors rounded-md cursor-pointer",
-                    activeSection === link.href
-                      ? "text-foreground font-medium"
-                      : "text-foreground-muted hover:text-foreground",
-                  )}
                 >
-                  {link.label}
-                  {/* Active indicator */}
-                  {activeSection === link.href && (
-                    <motion.span
-                      layoutId="activeSection"
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-primary rounded-full"
-                      transition={{
-                        type: "spring",
-                        stiffness: 380,
-                        damping: 30,
-                      }}
-                    />
-                  )}
-                </motion.button>
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      "relative px-3 py-2 text-sm transition-colors rounded-md",
+                      pathname === link.href
+                        ? "text-foreground font-medium"
+                        : "text-foreground-muted hover:text-foreground",
+                    )}
+                  >
+                    {link.label}
+                    {/* Active indicator */}
+                    {pathname === link.href && (
+                      <motion.span
+                        layoutId="activeSection"
+                        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-primary rounded-full"
+                        transition={{
+                          type: "spring",
+                          stiffness: 380,
+                          damping: 30,
+                        }}
+                      />
+                    )}
+                  </Link>
+                </motion.div>
               ))}
 
             <motion.div
@@ -234,11 +196,12 @@ const Navbar = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Button
-                  text="Start a Project"
-                  className="rounded-full px-6 py-2.5 text-sm bg-linear-to-r from-primary to-secondary text-white font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all"
-                  onClick={() => handleNavClick("#contact")}
-                />
+                <Link href="/contact">
+                  <Button
+                    text="Start a Project"
+                    className="rounded-full px-6 py-2.5 text-sm bg-linear-to-r from-primary to-secondary text-white font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all"
+                  />
+                </Link>
               </motion.div>
             </motion.div>
           </div>
@@ -277,34 +240,38 @@ const Navbar = () => {
                 duration: 0.4,
                 ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
               }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden bg-background/80 backdrop-blur-md border-t border-border/50"
             >
               <div className="py-6 space-y-2 border-t border-border/50">
                 {navLinks
                   .filter((link) => link.href !== "/")
                   .map((link, index) => (
-                    <motion.button
+                    <motion.div
                       key={link.href}
-                      onClick={() => handleNavClick(link.href)}
                       initial={{ opacity: 0, x: -30 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -30 }}
                       transition={{ delay: index * 0.05 + 0.1 }}
-                      className={cn(
-                        "flex items-center gap-3 py-3 px-4 rounded-xl text-lg font-medium transition-all w-full text-left",
-                        activeSection === link.href
-                          ? "bg-primary/10 text-primary"
-                          : "text-foreground-secondary hover:bg-surface hover:text-foreground dark:text-foreground-muted dark:hover:text-white",
-                      )}
                     >
-                      {activeSection === link.href && (
-                        <motion.span
-                          layoutId="mobileDot"
-                          className="w-2 h-2 bg-primary rounded-full"
-                        />
-                      )}
-                      {link.label}
-                    </motion.button>
+                      <Link
+                        href={link.href}
+                        className={cn(
+                          "flex items-center gap-3 py-3 px-4 rounded-xl text-lg font-medium transition-all",
+                          pathname === link.href
+                            ? "bg-primary/10 text-primary"
+                            : "text-foreground-secondary hover:bg-surface hover:text-foreground dark:text-foreground-muted dark:hover:text-white",
+                        )}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {pathname === link.href && (
+                          <motion.span
+                            layoutId="mobileDot"
+                            className="w-2 h-2 bg-primary rounded-full"
+                          />
+                        )}
+                        {link.label}
+                      </Link>
+                    </motion.div>
                   ))}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -313,11 +280,12 @@ const Navbar = () => {
                   transition={{ delay: 0.3 }}
                   className="pt-4"
                 >
-                  <Button
-                    text="Get in Touch"
-                    className="w-full rounded-xl py-4 text-base shadow-lg shadow-primary/25"
-                    onClick={() => handleNavClick("#contact")}
-                  />
+                  <Link href="/contact" onClick={() => setIsOpen(false)}>
+                    <Button
+                      text="Get in Touch"
+                      className="w-full rounded-xl py-4 text-base shadow-lg shadow-primary/25"
+                    />
+                  </Link>
                 </motion.div>
               </div>
             </motion.div>

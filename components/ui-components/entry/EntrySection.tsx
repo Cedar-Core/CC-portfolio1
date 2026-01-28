@@ -28,7 +28,7 @@ const EntrySection = ({ className }: EntrySectionProps) => {
     <section
       className={cn(
         "relative min-h-screen flex flex-col items-center justify-center overflow-hidden py-20",
-        className
+        className,
       )}
     >
       {/* Energy paths SVG - Radiating from center */}

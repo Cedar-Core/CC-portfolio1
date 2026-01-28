@@ -1198,7 +1198,6 @@ export const config: PortfolioConfig = {
       { label: "Services", href: "#services", order: 3 },
       { label: "Projects", href: "#projects", order: 4 },
       { label: "Ecosystem", href: "/ecosystem", order: 5 },
-      { label: "Contact", href: "/contact", order: 6 },
     ],
     footer: {
       sections: [

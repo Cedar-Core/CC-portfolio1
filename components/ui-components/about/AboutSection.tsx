@@ -225,10 +225,6 @@ const AboutSection = ({ className }: AboutSectionProps) => {
               </motion.div>
             </div>
           </div>
-
-          {/* Decorative elements */}
-          <div className="absolute -top-4 -right-4 w-24 h-24 border border-border/30 rounded-full pointer-events-none" />
-          <div className="absolute -bottom-4 -left-4 w-16 h-16 border border-primary/20 rounded-full pointer-events-none" />
         </motion.div>
       </div>
     </SectionWrapper>

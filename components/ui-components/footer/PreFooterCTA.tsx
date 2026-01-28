@@ -35,7 +35,7 @@ const PreFooterCTA = ({ className }: { className?: string }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative z-30 text-center uppercase font-heading"
+            className="relative z-30 text-center uppercase font-heading mb-4 md:mb-0"
             style={{ fontFamily: "var(--font-oswald), Oswald, sans-serif" }}
           >
             <h2
@@ -68,7 +68,7 @@ const PreFooterCTA = ({ className }: { className?: string }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="relative z-20 -mt-4 md:-mt-8 mb-0"
+            className="relative z-20 -mt-2 md:-mt-8 mb-0"
             style={{
               filter: "drop-shadow(0 25px 50px rgba(0,0,0,0.5))",
             }}
@@ -88,10 +88,9 @@ const PreFooterCTA = ({ className }: { className?: string }) => {
                 width={480}
                 height={290}
                 priority
-                className="relative z-10"
+                className="relative z-10 w-48 md:w-64 lg:w-80 xl:w-120"
                 style={{
                   transform: "rotate(-10deg)",
-                  maxWidth: "90vw",
                   height: "auto",
                 }}
               />
@@ -104,7 +103,7 @@ const PreFooterCTA = ({ className }: { className?: string }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="relative z-30 text-center uppercase font-heading -mt-2 md:-mt-6"
+            className="relative z-30 text-center uppercase font-heading -mt-1 md:-mt-6"
             style={{ fontFamily: "var(--font-oswald), Oswald, sans-serif" }}
           >
             <h2

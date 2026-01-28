@@ -80,10 +80,6 @@ const IdentityStatement = ({ className }: IdentityStatementProps) => {
       {/* Background accent glow */}
       <div
         className="absolute top-1/2 right-0 w-[40%] h-[60%] -translate-y-1/2 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at right center, rgba(93, 158, 255, 0.05) 0%, transparent 60%)",
-        }}
       />
 
       {/* 2.5. Product Showcase - Systems We've Built */}
