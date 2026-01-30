@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import PreFooterRibbon from "./PreFooterRibbon";
 import { Icon } from "@/components/ui/";
+import { Button } from "@/components/ui-components/shared";
 
 /**
  * PreFooterCTA - Main hero-style call to action
@@ -133,15 +134,10 @@ const PreFooterCTA = ({ className }: { className?: string }) => {
             style={{ fontFamily: "var(--font-oswald), Oswald, sans-serif" }}
             className="cursor-pointer mt-10"
           >
-            <Link
-              href="/contact"
-              className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-linear-to-r from-primary to-secondary text-white font-semibold text-sm shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all hover:scale-105"
-            >
-              <span>Contact us</span>
-              <Icon
-                name="MoveRight"
-                size={18}
-                className="transition-transform group-hover:translate-x-1"
+            <Link href="/contact">
+              <Button
+                text="Contact us"
+                className="rounded-full px-8 py-4 sm:px-10 sm:py-5 bg-linear-to-r from-primary to-secondary text-white font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all hover:scale-105"
               />
             </Link>
           </motion.div>

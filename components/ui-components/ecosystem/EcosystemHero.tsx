@@ -50,64 +50,66 @@ export function EcosystemHero() {
           },
         }}
       >
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Headline */}
-          <motion.h1
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            className="heading-xl text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-foreground leading-tight tracking-tight mb-8"
-          >
-            <span className="block">One ecosystem.</span>
-            <span className="block mt-2 text-primary">
-              Every system connected.
-            </span>
-          </motion.h1>
-
-          {/* Description */}
-          <motion.p
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            className="text-lg text-foreground-muted leading-relaxed font-light max-w-2xl mx-auto mb-12"
-          >
-            We don&apos;t build isolated projects. We architect connected
-            digital systems that scale with your business—frontend to
-            infrastructure, data to automation.
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-5"
-          >
-            {/* Primary CTA */}
-            <Link href="/contact">
-              <Button
-                text="Build your ecosystem"
-                className="rounded-full px-8 py-4 sm:px-10 sm:py-5 bg-linear-to-r from-primary to-secondary text-white font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all hover:scale-105"
-              />
-            </Link>
-
-            {/* Secondary CTA */}
-            <Link
-              href="/architecture"
-              className="inline-flex items-center gap-2 px-6 py-4 text-foreground-muted hover:text-foreground transition-colors font-medium"
+        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          <div className="text-left">
+            {/* Headline */}
+            <motion.h1
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              className="heading-xl text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-foreground leading-tight tracking-tight mb-8"
             >
-              <span>See the architecture</span>
-              <motion.div
-                animate={{ y: [0, 4, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
+              <span className="block">One ecosystem.</span>
+              <span className="block mt-2 text-primary">
+                Every system connected.
+              </span>
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              className="text-lg text-foreground-muted leading-relaxed font-light max-w-2xl mb-12"
+            >
+              We don&apos;t build isolated projects. We architect connected
+              digital systems that scale with your business.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+              className="flex flex-col sm:flex-row items-center gap-5"
+            >
+              {/* Primary CTA */}
+              <Link href="/contact">
+                <Button
+                  text="Build your ecosystem"
+                  className="rounded-full px-8 py-4 sm:px-10 sm:py-5 bg-linear-to-r from-primary to-secondary text-white font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all hover:scale-105"
+                />
+              </Link>
+
+              {/* Secondary CTA */}
+              <Link
+                href="#stack"
+                className="inline-flex items-center gap-2 px-6 py-4 text-foreground-muted hover:text-foreground transition-colors font-medium"
               >
-                <Icon name="ChevronDown" size={20} />
-              </motion.div>
-            </Link>
-          </motion.div>
+                <span>See the architecture</span>
+                <motion.div
+                  animate={{ y: [0, 4, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <Icon name="ChevronDown" size={20} />
+                </motion.div>
+              </Link>
+            </motion.div>
+          </div>
+          <div>{/* Right side - empty for now */}</div>
         </div>
       </motion.div>
 

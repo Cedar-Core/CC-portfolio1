@@ -199,7 +199,7 @@ const Navbar = () => {
                 <Link href="/contact">
                   <Button
                     text="Start a Project"
-                    className="rounded-full px-6 py-2.5 text-sm bg-linear-to-r from-primary to-secondary text-white font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all"
+                    className="rounded-full px-8 py-4 sm:px-10 sm:py-5 bg-linear-to-r from-primary to-secondary text-white font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all hover:scale-105"
                   />
                 </Link>
               </motion.div>

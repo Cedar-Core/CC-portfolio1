@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Icon } from "@/components/ui";
+import { Button } from "@/components/ui-components/shared";
 import { motion } from "framer-motion";
 
 interface FooterProps {
@@ -11,12 +12,16 @@ interface FooterProps {
 }
 
 const socialLinks = [
-  { name: "GitHub", icon: "Github", href: "https://github.com/cedarcore" },
-  { name: "Twitter", icon: "Twitter", href: "https://twitter.com/cedarcore" },
+  { name: "GitHub", icon: "Github", href: "https://github.com/cedar-core" },
+  {
+    name: "Instagram",
+    icon: "Instagram",
+    href: "https://instagram.com/cedar.core",
+  },
   {
     name: "LinkedIn",
     icon: "Linkedin",
-    href: "https://linkedin.com/company/cedarcore",
+    href: "https://linkedin.com/company/cedar-core",
   },
 ];
 
@@ -47,29 +52,25 @@ const Footer = ({ className }: FooterProps) => {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h2 className="heading-lg text-2xl md:text-3xl lg:text-4xl text-foreground mb-4">
+            <h2
+              className="text-2xl md:text-3xl lg:text-4xl text-foreground mb-4 font-bold"
+              style={{ fontFamily: "var(--font-oswald)" }}
+            >
               Ready to build something{" "}
-              <span className="text-primary text-glow-subtle">exceptional</span>
-              ?
+              <span className="text-primary">exceptional</span>?
             </h2>
             <p className="text-foreground-muted mb-8 max-w-md mx-auto">
               Let&apos;s discuss how we can help bring your vision to life.
             </p>
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-linear-to-r from-primary to-secondary text-white font-medium hover:opacity-90 transition-opacity"
-              onClick={(e) => {
-                e.preventDefault();
-                document
-                  .getElementById("contact")
-                  ?.scrollIntoView({ behavior: "smooth" });
-              }}
+            <Button
+              asChild
+              className="rounded-full px-8 py-4 sm:px-10 sm:py-5 bg-linear-to-r from-primary to-secondary text-white font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all hover:scale-105"
             >
-              Start a Project
-              <Icon name="ArrowRight" size={18} />
-            </motion.a>
+              <Link href="#contact">
+                Start a Project
+                <Icon name="ArrowRight" size={18} />
+              </Link>
+            </Button>
           </motion.div>
         </div>
       </div>
@@ -87,13 +88,18 @@ const Footer = ({ className }: FooterProps) => {
               height={24}
               className="rounded-lg"
             />
-            <span className="font-medium text-foreground">Cedar Core</span>
+            <span
+              className="font-medium text-foreground"
+              style={{ fontFamily: "var(--font-oswald)" }}
+            >
+              Cedar Core
+            </span>
           </Link>
 
           {/* Social Links */}
           <div className="flex items-center gap-4">
             {socialLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 target="_blank"
@@ -102,7 +108,7 @@ const Footer = ({ className }: FooterProps) => {
                 aria-label={link.name}
               >
                 <Icon name={link.icon} size={18} />
-              </a>
+              </Link>
             ))}
           </div>
 

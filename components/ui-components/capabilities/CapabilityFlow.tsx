@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { Icon } from "@/components/ui";
 import { SectionWrapper } from "@/components/ui-components/shared";
+import { Shad } from "@/components/ui";
 import { useRef, useEffect, useState, useMemo } from "react";
 
 interface CapabilityFlowProps {
@@ -102,39 +103,199 @@ const CapabilityFlow = ({ className }: CapabilityFlowProps) => {
 
   // Define all transforms at top level to avoid hook calls in callbacks
   const opacities = [
-    useTransform(smoothProgress, [0, 0.05, ranges[0].start, ranges[0].mid, ranges[0].end, ranges[0].end + 0.05], [1, 1, 1, 1, 0.4, 0.2]),
-    useTransform(smoothProgress, [ranges[1].start - 0.05, ranges[1].start, ranges[1].mid, ranges[1].end, ranges[1].end + 0.05], [0, 1, 1, 0.4, 0.2]),
-    useTransform(smoothProgress, [ranges[2].start - 0.05, ranges[2].start, ranges[2].mid, ranges[2].end, ranges[2].end + 0.05], [0, 1, 1, 0.4, 0.2]),
-    useTransform(smoothProgress, [ranges[3].start - 0.05, ranges[3].start, ranges[3].mid, ranges[3].end, ranges[3].end + 0.05], [0, 1, 1, 0.4, 0.2]),
-    useTransform(smoothProgress, [ranges[4].start - 0.05, ranges[4].start, ranges[4].mid, ranges[4].end, ranges[4].end + 0.05], [0, 1, 1, 0.4, 0.2]),
-    useTransform(smoothProgress, [ranges[5].start - 0.05, ranges[5].start, ranges[5].mid, ranges[5].end, ranges[5].end + 0.05], [0, 1, 1, 0.4, 0.2]),
+    useTransform(
+      smoothProgress,
+      [
+        0,
+        0.05,
+        ranges[0].start,
+        ranges[0].mid,
+        ranges[0].end,
+        ranges[0].end + 0.05,
+      ],
+      [1, 1, 1, 1, 0.4, 0.2],
+    ),
+    useTransform(
+      smoothProgress,
+      [
+        ranges[1].start - 0.05,
+        ranges[1].start,
+        ranges[1].mid,
+        ranges[1].end,
+        ranges[1].end + 0.05,
+      ],
+      [0, 1, 1, 0.4, 0.2],
+    ),
+    useTransform(
+      smoothProgress,
+      [
+        ranges[2].start - 0.05,
+        ranges[2].start,
+        ranges[2].mid,
+        ranges[2].end,
+        ranges[2].end + 0.05,
+      ],
+      [0, 1, 1, 0.4, 0.2],
+    ),
+    useTransform(
+      smoothProgress,
+      [
+        ranges[3].start - 0.05,
+        ranges[3].start,
+        ranges[3].mid,
+        ranges[3].end,
+        ranges[3].end + 0.05,
+      ],
+      [0, 1, 1, 0.4, 0.2],
+    ),
+    useTransform(
+      smoothProgress,
+      [
+        ranges[4].start - 0.05,
+        ranges[4].start,
+        ranges[4].mid,
+        ranges[4].end,
+        ranges[4].end + 0.05,
+      ],
+      [0, 1, 1, 0.4, 0.2],
+    ),
+    useTransform(
+      smoothProgress,
+      [
+        ranges[5].start - 0.05,
+        ranges[5].start,
+        ranges[5].mid,
+        ranges[5].end,
+        ranges[5].end + 0.05,
+      ],
+      [0, 1, 1, 0.4, 0.2],
+    ),
   ];
 
   const scales = [
-    useTransform(smoothProgress, [0, 0.05, ranges[0].start, ranges[0].mid, ranges[0].end], [1, 1, 1, 1, 0.95]),
-    useTransform(smoothProgress, [ranges[1].start - 0.05, ranges[1].start, ranges[1].mid, ranges[1].end], [0.9, 1, 1, 0.95]),
-    useTransform(smoothProgress, [ranges[2].start - 0.05, ranges[2].start, ranges[2].mid, ranges[2].end], [0.9, 1, 1, 0.95]),
-    useTransform(smoothProgress, [ranges[3].start - 0.05, ranges[3].start, ranges[3].mid, ranges[3].end], [0.9, 1, 1, 0.95]),
-    useTransform(smoothProgress, [ranges[4].start - 0.05, ranges[4].start, ranges[4].mid, ranges[4].end], [0.9, 1, 1, 0.95]),
-    useTransform(smoothProgress, [ranges[5].start - 0.05, ranges[5].start, ranges[5].mid, ranges[5].end], [0.9, 1, 1, 0.95]),
+    useTransform(
+      smoothProgress,
+      [0, 0.05, ranges[0].start, ranges[0].mid, ranges[0].end],
+      [1, 1, 1, 1, 0.95],
+    ),
+    useTransform(
+      smoothProgress,
+      [ranges[1].start - 0.05, ranges[1].start, ranges[1].mid, ranges[1].end],
+      [0.9, 1, 1, 0.95],
+    ),
+    useTransform(
+      smoothProgress,
+      [ranges[2].start - 0.05, ranges[2].start, ranges[2].mid, ranges[2].end],
+      [0.9, 1, 1, 0.95],
+    ),
+    useTransform(
+      smoothProgress,
+      [ranges[3].start - 0.05, ranges[3].start, ranges[3].mid, ranges[3].end],
+      [0.9, 1, 1, 0.95],
+    ),
+    useTransform(
+      smoothProgress,
+      [ranges[4].start - 0.05, ranges[4].start, ranges[4].mid, ranges[4].end],
+      [0.9, 1, 1, 0.95],
+    ),
+    useTransform(
+      smoothProgress,
+      [ranges[5].start - 0.05, ranges[5].start, ranges[5].mid, ranges[5].end],
+      [0.9, 1, 1, 0.95],
+    ),
   ];
 
   const xTransforms = [
     useTransform(smoothProgress, [0, ranges[0].start], [0, 0]),
-    useTransform(smoothProgress, [ranges[1].start - 0.05, ranges[1].start], [capabilities[1].position === "left" ? -40 : 40, 0]),
-    useTransform(smoothProgress, [ranges[2].start - 0.05, ranges[2].start], [capabilities[2].position === "left" ? -40 : 40, 0]),
-    useTransform(smoothProgress, [ranges[3].start - 0.05, ranges[3].start], [capabilities[3].position === "left" ? -40 : 40, 0]),
-    useTransform(smoothProgress, [ranges[4].start - 0.05, ranges[4].start], [capabilities[4].position === "left" ? -40 : 40, 0]),
-    useTransform(smoothProgress, [ranges[5].start - 0.05, ranges[5].start], [capabilities[5].position === "left" ? -40 : 40, 0]),
+    useTransform(
+      smoothProgress,
+      [ranges[1].start - 0.05, ranges[1].start],
+      [capabilities[1].position === "left" ? -40 : 40, 0],
+    ),
+    useTransform(
+      smoothProgress,
+      [ranges[2].start - 0.05, ranges[2].start],
+      [capabilities[2].position === "left" ? -40 : 40, 0],
+    ),
+    useTransform(
+      smoothProgress,
+      [ranges[3].start - 0.05, ranges[3].start],
+      [capabilities[3].position === "left" ? -40 : 40, 0],
+    ),
+    useTransform(
+      smoothProgress,
+      [ranges[4].start - 0.05, ranges[4].start],
+      [capabilities[4].position === "left" ? -40 : 40, 0],
+    ),
+    useTransform(
+      smoothProgress,
+      [ranges[5].start - 0.05, ranges[5].start],
+      [capabilities[5].position === "left" ? -40 : 40, 0],
+    ),
   ];
 
   const blurValues = [
-    useTransform(smoothProgress, [0, ranges[0].start - 0.05, ranges[0].start, ranges[0].end, ranges[0].end + 0.05], ["blur(4px)", "blur(4px)", "blur(0px)", "blur(0px)", "blur(2px)"]),
-    useTransform(smoothProgress, [ranges[1].start - 0.05, ranges[1].start, ranges[1].end, ranges[1].end + 0.05], ["blur(4px)", "blur(0px)", "blur(0px)", "blur(2px)"]),
-    useTransform(smoothProgress, [ranges[2].start - 0.05, ranges[2].start, ranges[2].end, ranges[2].end + 0.05], ["blur(4px)", "blur(0px)", "blur(0px)", "blur(2px)"]),
-    useTransform(smoothProgress, [ranges[3].start - 0.05, ranges[3].start, ranges[3].end, ranges[3].end + 0.05], ["blur(4px)", "blur(0px)", "blur(0px)", "blur(2px)"]),
-    useTransform(smoothProgress, [ranges[4].start - 0.05, ranges[4].start, ranges[4].end, ranges[4].end + 0.05], ["blur(4px)", "blur(0px)", "blur(0px)", "blur(2px)"]),
-    useTransform(smoothProgress, [ranges[5].start - 0.05, ranges[5].start, ranges[5].end, ranges[5].end + 0.05], ["blur(4px)", "blur(0px)", "blur(0px)", "blur(2px)"]),
+    useTransform(
+      smoothProgress,
+      [
+        0,
+        ranges[0].start - 0.05,
+        ranges[0].start,
+        ranges[0].end,
+        ranges[0].end + 0.05,
+      ],
+      ["blur(4px)", "blur(4px)", "blur(0px)", "blur(0px)", "blur(2px)"],
+    ),
+    useTransform(
+      smoothProgress,
+      [
+        ranges[1].start - 0.05,
+        ranges[1].start,
+        ranges[1].end,
+        ranges[1].end + 0.05,
+      ],
+      ["blur(4px)", "blur(0px)", "blur(0px)", "blur(2px)"],
+    ),
+    useTransform(
+      smoothProgress,
+      [
+        ranges[2].start - 0.05,
+        ranges[2].start,
+        ranges[2].end,
+        ranges[2].end + 0.05,
+      ],
+      ["blur(4px)", "blur(0px)", "blur(0px)", "blur(2px)"],
+    ),
+    useTransform(
+      smoothProgress,
+      [
+        ranges[3].start - 0.05,
+        ranges[3].start,
+        ranges[3].end,
+        ranges[3].end + 0.05,
+      ],
+      ["blur(4px)", "blur(0px)", "blur(0px)", "blur(2px)"],
+    ),
+    useTransform(
+      smoothProgress,
+      [
+        ranges[4].start - 0.05,
+        ranges[4].start,
+        ranges[4].end,
+        ranges[4].end + 0.05,
+      ],
+      ["blur(4px)", "blur(0px)", "blur(0px)", "blur(2px)"],
+    ),
+    useTransform(
+      smoothProgress,
+      [
+        ranges[5].start - 0.05,
+        ranges[5].start,
+        ranges[5].end,
+        ranges[5].end + 0.05,
+      ],
+      ["blur(4px)", "blur(0px)", "blur(0px)", "blur(2px)"],
+    ),
   ];
 
   const lineOpacities = [
@@ -165,12 +326,36 @@ const CapabilityFlow = ({ className }: CapabilityFlowProps) => {
   ];
 
   const dotBackgrounds = [
-    useTransform(smoothProgress, [ranges[0].mid, ranges[0].mid + 0.05], ["var(--background)", "var(--primary)"]),
-    useTransform(smoothProgress, [ranges[1].mid, ranges[1].mid + 0.05], ["var(--background)", "var(--primary)"]),
-    useTransform(smoothProgress, [ranges[2].mid, ranges[2].mid + 0.05], ["var(--background)", "var(--primary)"]),
-    useTransform(smoothProgress, [ranges[3].mid, ranges[3].mid + 0.05], ["var(--background)", "var(--primary)"]),
-    useTransform(smoothProgress, [ranges[4].mid, ranges[4].mid + 0.05], ["var(--background)", "var(--primary)"]),
-    useTransform(smoothProgress, [ranges[5].mid, ranges[5].mid + 0.05], ["var(--background)", "var(--primary)"]),
+    useTransform(
+      smoothProgress,
+      [ranges[0].mid, ranges[0].mid + 0.05],
+      ["var(--background)", "var(--primary)"],
+    ),
+    useTransform(
+      smoothProgress,
+      [ranges[1].mid, ranges[1].mid + 0.05],
+      ["var(--background)", "var(--primary)"],
+    ),
+    useTransform(
+      smoothProgress,
+      [ranges[2].mid, ranges[2].mid + 0.05],
+      ["var(--background)", "var(--primary)"],
+    ),
+    useTransform(
+      smoothProgress,
+      [ranges[3].mid, ranges[3].mid + 0.05],
+      ["var(--background)", "var(--primary)"],
+    ),
+    useTransform(
+      smoothProgress,
+      [ranges[4].mid, ranges[4].mid + 0.05],
+      ["var(--background)", "var(--primary)"],
+    ),
+    useTransform(
+      smoothProgress,
+      [ranges[5].mid, ranges[5].mid + 0.05],
+      ["var(--background)", "var(--primary)"],
+    ),
   ];
 
   return (
@@ -183,9 +368,7 @@ const CapabilityFlow = ({ className }: CapabilityFlowProps) => {
     >
       {/* Header section - scrolls out before capabilities pin */}
       <div className="py-16 md:py-24 px-6">
-        <motion.div
-          className="text-center mb-16 md:mb-24"
-        >
+        <motion.div className="text-center mb-16 md:mb-24">
           <div className="flex items-center justify-center gap-4 mb-8">
             <div className="w-12 h-px bg-linear-to-r from-transparent to-primary/50" />
             <motion.span
@@ -199,7 +382,10 @@ const CapabilityFlow = ({ className }: CapabilityFlowProps) => {
             <div className="w-12 h-px bg-linear-to-l from-transparent to-primary/50" />
           </div>
 
-          <h2 className="heading-xl text-4xl md:text-7xl lg:text-8xl text-foreground mb-6 font-bold tracking-tight">
+          <h2
+            className="text-4xl md:text-7xl lg:text-8xl text-foreground mb-6 font-bold tracking-tight"
+            style={{ fontFamily: "var(--font-oswald)" }}
+          >
             What We <span className="text-primary">Build</span>
           </h2>
 
@@ -213,8 +399,7 @@ const CapabilityFlow = ({ className }: CapabilityFlowProps) => {
       {/* Sticky capabilities section */}
       <div
         className={cn(
-          !isMobile &&
-            "sticky top-0 h-screen flex flex-col justify-center",
+          !isMobile && "sticky top-0 h-screen flex flex-col justify-center",
         )}
       >
         <SectionWrapper id="capabilities" className="relative py-0!">
@@ -287,7 +472,7 @@ const CapabilityFlow = ({ className }: CapabilityFlowProps) => {
                     )}
 
                     {/* Capability card */}
-                    <div className="capability-node group">
+                    <Shad.Card className="p-5">
                       <div className="flex items-start gap-4">
                         {/* Icon */}
                         <div className="shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -308,7 +493,7 @@ const CapabilityFlow = ({ className }: CapabilityFlowProps) => {
                           </p>
                         </div>
                       </div>
-                    </div>
+                    </Shad.Card>
                   </motion.div>
                 );
               })}

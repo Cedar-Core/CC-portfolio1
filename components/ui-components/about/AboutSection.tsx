@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { SectionWrapper } from "@/components/ui-components/shared";
 import { Icon } from "@/components/ui";
+import { Shad } from "@/components/ui";
 import { motion } from "framer-motion";
 
 interface AboutSectionProps {
@@ -70,7 +71,10 @@ const AboutSection = ({ className }: AboutSectionProps) => {
             Philosophy
           </span>
         </div>
-        <h2 className="heading-lg text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
+        <h2
+          className="text-3xl md:text-4xl lg:text-5xl text-foreground mb-4 font-bold"
+          style={{ fontFamily: "var(--font-oswald)" }}
+        >
           How We Think
         </h2>
         <p className="text-foreground-muted max-w-2xl">
@@ -91,23 +95,25 @@ const AboutSection = ({ className }: AboutSectionProps) => {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className="group flex gap-4 p-5 rounded-xl system-card hover:border-primary/30 transition-all duration-300">
-                <div className="shrink-0 w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <Icon
-                    name={principle.icon}
-                    size={20}
-                    className="text-primary"
-                  />
+              <Shad.Card className="p-5 hover:border-primary/30">
+                <div className="flex gap-4">
+                  <div className="shrink-0 w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <Icon
+                      name={principle.icon}
+                      size={20}
+                      className="text-primary"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
+                      {principle.title}
+                    </h3>
+                    <p className="text-sm text-foreground-muted leading-relaxed">
+                      {principle.description}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
-                    {principle.title}
-                  </h3>
-                  <p className="text-sm text-foreground-muted leading-relaxed">
-                    {principle.description}
-                  </p>
-                </div>
-              </div>
+              </Shad.Card>
             </motion.div>
           ))}
         </div>
