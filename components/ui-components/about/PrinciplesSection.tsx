@@ -6,7 +6,7 @@ import { Icon } from "@/components/ui";
 import { Shad } from "@/components/ui";
 import { motion } from "framer-motion";
 
-interface AboutSectionProps {
+interface PrinciplesSectionProps {
   className?: string;
 }
 
@@ -38,14 +38,16 @@ const principles = [
 ];
 
 /**
- * AboutSection — "Architecture Mindset" / "How We Think"
- * Engineering philosophy conveyed through visual metaphor.
- * Terminal-style process indicator with principles.
+ * PrinciplesSection — Engineering principles / "How We Think"
+ * Terminal-style visualization with principles cards
+ * Preserved from original AboutSection with minor motion refinements
  */
-const AboutSection = ({ className }: AboutSectionProps) => {
+export default function PrinciplesSection({
+  className,
+}: PrinciplesSectionProps) {
   return (
     <SectionWrapper
-      id="about"
+      id="principles"
       className={cn("relative overflow-hidden", className)}
     >
       {/* Background subtle accent */}
@@ -235,6 +237,4 @@ const AboutSection = ({ className }: AboutSectionProps) => {
       </div>
     </SectionWrapper>
   );
-};
-
-export default AboutSection;
+}

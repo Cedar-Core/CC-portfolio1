@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import PreFooterRibbon from "./PreFooterRibbon";
 import { Icon } from "@/components/ui/";
+import { Button } from "@/components/ui-components/shared";
 
 /**
  * PreFooterCTA - Main hero-style call to action
@@ -35,7 +36,7 @@ const PreFooterCTA = ({ className }: { className?: string }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative z-30 text-center uppercase font-heading"
+            className="relative z-30 text-center uppercase font-heading mb-4 md:mb-0"
             style={{ fontFamily: "var(--font-oswald), Oswald, sans-serif" }}
           >
             <h2
@@ -68,7 +69,7 @@ const PreFooterCTA = ({ className }: { className?: string }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="relative z-20 -mt-4 md:-mt-8 mb-0"
+            className="relative z-20 -mt-2 md:-mt-8 mb-0"
             style={{
               filter: "drop-shadow(0 25px 50px rgba(0,0,0,0.5))",
             }}
@@ -88,10 +89,9 @@ const PreFooterCTA = ({ className }: { className?: string }) => {
                 width={480}
                 height={290}
                 priority
-                className="relative z-10"
+                className="relative z-10 w-48 md:w-64 lg:w-80 xl:w-120"
                 style={{
                   transform: "rotate(-10deg)",
-                  maxWidth: "90vw",
                   height: "auto",
                 }}
               />
@@ -104,7 +104,7 @@ const PreFooterCTA = ({ className }: { className?: string }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="relative z-30 text-center uppercase font-heading -mt-2 md:-mt-6"
+            className="relative z-30 text-center uppercase font-heading -mt-1 md:-mt-6"
             style={{ fontFamily: "var(--font-oswald), Oswald, sans-serif" }}
           >
             <h2
@@ -134,15 +134,10 @@ const PreFooterCTA = ({ className }: { className?: string }) => {
             style={{ fontFamily: "var(--font-oswald), Oswald, sans-serif" }}
             className="cursor-pointer mt-10"
           >
-            <Link
-              href="/contact"
-              className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-linear-to-r from-primary to-secondary text-white font-semibold text-sm shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all hover:scale-105"
-            >
-              <span>Contact us</span>
-              <Icon
-                name="MoveRight"
-                size={18}
-                className="transition-transform group-hover:translate-x-1"
+            <Link href="/contact">
+              <Button
+                text="Contact us"
+                className="rounded-full px-8 py-4 sm:px-10 sm:py-5 bg-linear-to-r from-primary to-secondary text-white font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all hover:scale-105"
               />
             </Link>
           </motion.div>

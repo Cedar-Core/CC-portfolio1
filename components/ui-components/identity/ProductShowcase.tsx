@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { products } from "@/config/products.config";
 import {
@@ -61,7 +62,7 @@ const ProductShowcase = ({ className }: ProductShowcaseProps) => {
     (index: number) => {
       api?.scrollTo(index);
     },
-    [api]
+    [api],
   );
 
   return (
@@ -141,7 +142,7 @@ const ProductShowcase = ({ className }: ProductShowcaseProps) => {
               // Handle loop wraparound for distance calculation
               const wrappedDistance = Math.min(
                 distance,
-                products.length - distance
+                products.length - distance,
               );
 
               return (
@@ -149,67 +150,69 @@ const ProductShowcase = ({ className }: ProductShowcaseProps) => {
                   key={product.id}
                   className="pl-0 basis-[70%] md:basis-[50%] lg:basis-[40%]"
                 >
-                  <motion.div
-                    className="relative flex items-center justify-center h-[400px] md:h-[500px] cursor-pointer"
-                    animate={{
-                      scale: isActive ? 1.05 : 0.8 - wrappedDistance * 0.1,
-                      opacity: isActive ? 1 : 0.4 - wrappedDistance * 0.1,
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      ease: [0.22, 1, 0.36, 1],
-                    }}
-                    onClick={() => goToSlide(index)}
-                  >
-                    {/* Product Image with Float Animation */}
+                  <Link href={`/useCase/${products[activeIndex]?.id}`}>
                     <motion.div
-                      className="relative"
-                      animate={
-                        isActive
-                          ? {
-                              y: [0, -8, 0],
-                            }
-                          : { y: 0 }
-                      }
-                      transition={
-                        isActive
-                          ? {
-                              duration: 4,
-                              ease: "easeInOut",
-                              repeat: Infinity,
-                            }
-                          : {}
-                      }
+                      className="relative flex items-center justify-center h-100 md:h-125 cursor-pointer"
+                      animate={{
+                        scale: isActive ? 1.05 : 0.8 - wrappedDistance * 0.1,
+                        opacity: isActive ? 1 : 0.4 - wrappedDistance * 0.1,
+                      }}
+                      transition={{
+                        duration: 0.5,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
+                      onClick={() => goToSlide(index)}
                     >
-                      <Image
-                        src={product.imageSrc}
-                        alt={product.alt}
-                        width={600}
-                        height={400}
-                        className="w-[350px] md:w-[450px] lg:w-[500px] h-auto object-contain select-none"
-                        priority={index === 0}
-                        draggable={false}
-                      />
-
-                      {/* Glow Effect - Beneath laptop */}
+                      {/* Product Image with Float Animation */}
                       <motion.div
-                        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[300px] md:w-[400px] h-20 pointer-events-none"
-                        initial={false}
-                        animate={{
-                          opacity: isActive ? 1 : 0.15,
-                          scale: isActive ? 1 : 0.5,
-                        }}
-                        transition={{
-                          duration: 0.5,
-                          ease: [0.22, 1, 0.36, 1],
-                        }}
-                        style={{
-                          background: `radial-gradient(ellipse 100% 100% at center bottom, rgba(93, 158, 255, 0.6) 0%, rgba(82, 95, 249, 0.4) 30%, transparent 70%)`,
-                          filter: "blur(25px)",
-                        }}
-                      />
+                        className="relative"
+                        animate={
+                          isActive
+                            ? {
+                                y: [0, -8, 0],
+                              }
+                            : { y: 0 }
+                        }
+                        transition={
+                          isActive
+                            ? {
+                                duration: 4,
+                                ease: "easeInOut",
+                                repeat: Infinity,
+                              }
+                            : {}
+                        }
+                      >
+                        <Image
+                          src={product.imageSrc}
+                          alt={product.alt}
+                          width={600}
+                          height={400}
+                          className="w-[350px] md:w-[450px] lg:w-[500px] h-auto object-contain select-none"
+                          priority={index === 0}
+                          draggable={false}
+                        />
+
+                        {/* Glow Effect - Beneath laptop */}
+                        <motion.div
+                          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[300px] md:w-[400px] h-20 pointer-events-none"
+                          initial={false}
+                          animate={{
+                            opacity: isActive ? 1 : 0.15,
+                            scale: isActive ? 1 : 0.5,
+                          }}
+                          transition={{
+                            duration: 0.5,
+                            ease: [0.22, 1, 0.36, 1],
+                          }}
+                          style={{
+                            background: `radial-gradient(ellipse 100% 100% at center bottom, rgba(93, 158, 255, 0.6) 0%, rgba(82, 95, 249, 0.4) 30%, transparent 70%)`,
+                            filter: "blur(25px)",
+                          }}
+                        />
+                      </motion.div>
                     </motion.div>
-                  </motion.div>
+                  </Link>
                 </CarouselItem>
               );
             })}
@@ -266,7 +269,7 @@ const ProductShowcase = ({ className }: ProductShowcaseProps) => {
               "relative w-2 h-2 rounded-full transition-all duration-300",
               index === activeIndex
                 ? "bg-primary w-8"
-                : "bg-foreground-muted/30 hover:bg-foreground-muted/50"
+                : "bg-foreground-muted/30 hover:bg-foreground-muted/50",
             )}
             aria-label={`Go to ${product.title}`}
             initial={{ opacity: 0, scale: 0 }}

@@ -1194,11 +1194,10 @@ export const config: PortfolioConfig = {
   navigation: {
     main: [
       { label: "Home", href: "/", order: 1 },
-      { label: "About", href: "#about", order: 2 },
+      { label: "About", href: "/about", order: 2 },
       { label: "Services", href: "#services", order: 3 },
       { label: "Projects", href: "#projects", order: 4 },
       { label: "Ecosystem", href: "/ecosystem", order: 5 },
-      { label: "Contact", href: "/contact", order: 6 },
     ],
     footer: {
       sections: [

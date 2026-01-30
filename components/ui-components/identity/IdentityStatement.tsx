@@ -44,11 +44,14 @@ const IdentityStatement = ({ className }: IdentityStatementProps) => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="heading-xl text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-foreground leading-tight mb-8">
+          <h2
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-foreground leading-tight mb-8 font-bold"
+            style={{ fontFamily: "var(--font-oswald)" }}
+          >
             We build the{" "}
             <TypewriterText
               words={SYSTEM_WORDS}
-              className="text-primary text-glow-subtle"
+              className="text-primary"
               typingSpeed={70}
               deletingSpeed={60}
               pauseDuration={1800}
@@ -57,7 +60,7 @@ const IdentityStatement = ({ className }: IdentityStatementProps) => {
             <br className="hidden md:block" /> that other software{" "}
             <TypewriterText
               words={DEPENDS_WORDS}
-              className="text-primary text-glow-subtle"
+              className="text-primary"
               typingSpeed={70}
               deletingSpeed={60}
               pauseDuration={1800}
@@ -78,13 +81,7 @@ const IdentityStatement = ({ className }: IdentityStatementProps) => {
       </div>
 
       {/* Background accent glow */}
-      <div
-        className="absolute top-1/2 right-0 w-[40%] h-[60%] -translate-y-1/2 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at right center, rgba(93, 158, 255, 0.05) 0%, transparent 60%)",
-        }}
-      />
+      <div className="absolute top-1/2 right-0 w-[40%] h-[60%] -translate-y-1/2 pointer-events-none" />
 
       {/* 2.5. Product Showcase - Systems We've Built */}
       <ProductShowcase />

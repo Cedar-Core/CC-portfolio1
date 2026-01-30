@@ -1,159 +1,250 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 import { SectionWrapper } from "@/components/ui-components/shared";
 import { cn } from "@/lib/utils";
+import { Card } from "@/components/ui/card";
 
 interface Layer {
-    id: string;
-    name: string;
-    description: string;
-    width: string;
+  id: string;
+  name: string;
+  description: string;
+  width: string;
 }
 
 const layers: Layer[] = [
-    {
-        id: "frontend",
-        name: "Frontend Experiences",
-        description: "Websites • Web Apps • Mobile Apps",
-        width: "w-full",
-    },
-    {
-        id: "backend",
-        name: "Backend Systems",
-        description: "APIs • Authentication • Business Logic",
-        width: "w-[92%]",
-    },
-    {
-        id: "data",
-        name: "Data Layer",
-        description: "Databases • Analytics • Reporting",
-        width: "w-[84%]",
-    },
-    {
-        id: "integrations",
-        name: "Integrations",
-        description: "Payments • CRMs • Third-party Services",
-        width: "w-[76%]",
-    },
-    {
-        id: "infrastructure",
-        name: "Infrastructure",
-        description: "Hosting • Storage • Security • Scalability",
-        width: "w-[68%]",
-    },
-    {
-        id: "operations",
-        name: "Operations",
-        description: "Automation • Monitoring • Maintenance",
-        width: "w-[60%]",
-    },
+  {
+    id: "frontend",
+    name: "Frontend Experiences",
+    description: "Websites • Web Apps • Mobile Apps",
+    width: "w-full",
+  },
+  {
+    id: "backend",
+    name: "Backend Systems",
+    description: "APIs • Authentication • Business Logic",
+    width: "w-[92%]",
+  },
+  {
+    id: "data",
+    name: "Data Layer",
+    description: "Databases • Analytics • Reporting",
+    width: "w-[84%]",
+  },
+  {
+    id: "integrations",
+    name: "Integrations",
+    description: "Payments • CRMs • Third-party Services",
+    width: "w-[76%]",
+  },
+  {
+    id: "infrastructure",
+    name: "Infrastructure",
+    description: "Hosting • Storage • Security • Scalability",
+    width: "w-[68%]",
+  },
+  {
+    id: "operations",
+    name: "Operations",
+    description: "Automation • Monitoring • Maintenance",
+    width: "w-[60%]",
+  },
 ];
 
 export function EcosystemStack() {
-    return (
-        <SectionWrapper id="stack" className="relative">
-            {/* Background accent */}
-            <div
-                className="absolute bottom-0 right-0 w-96 h-96 pointer-events-none"
-                style={{
-                    background:
-                        "radial-gradient(circle, rgba(93, 158, 255, 0.05) 0%, transparent 60%)",
-                }}
-            />
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
-            {/* Section Header */}
-            <motion.div
-                className="text-center mb-16"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-            >
-                <div className="flex items-center justify-center gap-3 mb-6">
-                    <div className="w-8 h-px bg-linear-to-r from-transparent to-primary" />
-                    <span className="text-xs font-mono text-primary uppercase tracking-widest">
-                        Layers
-                    </span>
-                    <div className="w-8 h-px bg-linear-to-l from-transparent to-primary" />
-                </div>
-                <h2 className="heading-lg text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
-                    Architecture Layers
-                </h2>
-                <p className="text-foreground-muted max-w-2xl mx-auto">
-                    Every layer connects. Every system communicates. One unified ecosystem.
-                </p>
-            </motion.div>
+  // Check for mobile to disable pinning
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
-            {/* Layered Stack Visualization */}
-            <motion.div
-                className="max-w-4xl mx-auto"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-100px" }}
-                variants={{
-                    hidden: { opacity: 0 },
-                    visible: {
-                        opacity: 1,
-                        transition: { staggerChildren: 0.1 },
-                    },
-                }}
-            >
-                {/* Layers */}
-                <div className="flex flex-col items-center gap-4">
-                    {layers.map((layer, index) => (
-                        <motion.div
-                            key={layer.id}
-                            className={cn("relative", layer.width)}
-                            variants={{
-                                hidden: { opacity: 0, y: 30, scale: 0.95 },
-                                visible: {
-                                    opacity: 1,
-                                    y: 0,
-                                    scale: 1,
-                                    transition: { duration: 0.6 },
-                                },
-                            }}
-                        >
-                            {/* Layer card */}
-                            <div className="relative px-6 py-5 rounded-2xl system-card hover:scale-[1.02] transition-transform duration-300">
-                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                                    <div className="flex items-center gap-3">
-                                        {/* Layer number */}
-                                        <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary text-sm font-mono">
-                                            {String(index + 1).padStart(2, "0")}
-                                        </span>
-                                        <h3 className="text-lg sm:text-xl font-semibold text-foreground">
-                                            {layer.name}
-                                        </h3>
-                                    </div>
-                                    <p className="text-sm text-foreground-muted sm:text-right pl-11 sm:pl-0">
-                                        {layer.description}
-                                    </p>
-                                </div>
-                            </div>
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
 
-                            {/* Vertical connector */}
-                            {index < layers.length - 1 && (
-                                <div className="absolute left-1/2 -bottom-4 -translate-x-1/2 w-px h-4 bg-linear-to-b from-border to-transparent" />
-                            )}
-                        </motion.div>
-                    ))}
-                </div>
+  // Create transforms for each layer
+  const opacity0 = useTransform(scrollYProgress, [0, 0, 0.1, 1], [0, 0, 1, 1]);
+  const y0 = useTransform(scrollYProgress, [0, 0, 0.1, 1], [30, 30, 0, 0]);
+  const scale0 = useTransform(
+    scrollYProgress,
+    [0, 0, 0.1, 1],
+    [0.95, 0.95, 1, 1],
+  );
+  const opacity1 = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.25, 1],
+    [0, 0, 1, 1],
+  );
+  const y1 = useTransform(scrollYProgress, [0, 0.15, 0.25, 1], [30, 30, 0, 0]);
+  const scale1 = useTransform(
+    scrollYProgress,
+    [0, 0.15, 0.25, 1],
+    [0.95, 0.95, 1, 1],
+  );
+  const opacity2 = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.4, 1],
+    [0, 0, 1, 1],
+  );
+  const y2 = useTransform(scrollYProgress, [0, 0.3, 0.4, 1], [30, 30, 0, 0]);
+  const scale2 = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.4, 1],
+    [0.95, 0.95, 1, 1],
+  );
+  const opacity3 = useTransform(
+    scrollYProgress,
+    [0, 0.45, 0.55, 1],
+    [0, 0, 1, 1],
+  );
+  const y3 = useTransform(scrollYProgress, [0, 0.45, 0.55, 1], [30, 30, 0, 0]);
+  const scale3 = useTransform(
+    scrollYProgress,
+    [0, 0.45, 0.55, 1],
+    [0.95, 0.95, 1, 1],
+  );
+  const opacity4 = useTransform(
+    scrollYProgress,
+    [0, 0.6, 0.7, 1],
+    [0, 0, 1, 1],
+  );
+  const y4 = useTransform(scrollYProgress, [0, 0.6, 0.7, 1], [30, 30, 0, 0]);
+  const scale4 = useTransform(
+    scrollYProgress,
+    [0, 0.6, 0.7, 1],
+    [0.95, 0.95, 1, 1],
+  );
+  const opacity5 = useTransform(
+    scrollYProgress,
+    [0, 0.75, 0.85, 1],
+    [0, 0, 1, 1],
+  );
+  const y5 = useTransform(scrollYProgress, [0, 0.75, 0.85, 1], [30, 30, 0, 0]);
+  const scale5 = useTransform(
+    scrollYProgress,
+    [0, 0.75, 0.85, 1],
+    [0.95, 0.95, 1, 1],
+  );
 
-                {/* Bottom annotation */}
+  const layerTransforms = [
+    { opacity: opacity0, y: y0, scale: scale0 },
+    { opacity: opacity1, y: y1, scale: scale1 },
+    { opacity: opacity2, y: y2, scale: scale2 },
+    { opacity: opacity3, y: y3, scale: scale3 },
+    { opacity: opacity4, y: y4, scale: scale4 },
+    { opacity: opacity5, y: y5, scale: scale5 },
+  ];
+
+  return (
+    <div
+      ref={containerRef}
+      className={cn(
+        "relative",
+        !isMobile && "h-[400vh]", // Define scroll distance for desktop
+      )}
+    >
+      {/* Sticky stack section */}
+      <div
+        className={cn(
+          !isMobile && "sticky top-0 h-screen flex flex-col justify-center",
+        )}
+      >
+        <SectionWrapper
+          id="stack"
+          className={cn("relative", !isMobile && "py-0")}
+        >
+          {/* Background accent */}
+          <div
+            className="absolute bottom-0 right-0 w-96 h-96 pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(93, 158, 255, 0.05) 0%, transparent 60%)",
+            }}
+          />
+
+          {/* Section Header */}
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="w-8 h-px bg-linear-to-r from-transparent to-primary" />
+              <span className="text-sm font-mono text-primary uppercase tracking-[0.3em]">
+                Layers
+              </span>
+              <div className="w-8 h-px bg-linear-to-l from-transparent to-primary" />
+            </div>
+            <h2 className="heading-lg text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
+              Architecture Layers
+            </h2>
+            <p className="text-foreground-muted max-w-2xl mx-auto">
+              Every layer connects. Every system communicates. One unified
+              ecosystem.
+            </p>
+          </motion.div>
+
+          {/* Layered Stack Visualization */}
+          <motion.div className="max-w-4xl mx-auto">
+            {/* Layers */}
+            <div className="flex flex-col items-center gap-4">
+              {layers.map((layer, index) => (
                 <motion.div
-                    className="mt-12 text-center"
-                    variants={{
-                        hidden: { opacity: 0 },
-                        visible: { opacity: 1, transition: { delay: 0.6 } },
-                    }}
+                  key={layer.id}
+                  className={cn("relative", layer.width)}
+                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                  style={layerTransforms[index]}
                 >
-                    <p className="text-foreground-muted text-sm font-light italic">
-                        Each layer is designed to communicate seamlessly with the others
-                    </p>
+                  {/* Layer card */}
+                  <Card className="relative px-6 py-5 hover:scale-[1.02] transition-transform duration-300">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                      <div className="flex items-center gap-3">
+                        {/* Layer number */}
+                        <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 text-primary text-sm font-mono">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <h3 className="text-lg sm:text-xl font-semibold text-foreground">
+                          {layer.name}
+                        </h3>
+                      </div>
+                      <p className="text-sm text-foreground-muted sm:text-right pl-11 sm:pl-0">
+                        {layer.description}
+                      </p>
+                    </div>
+                  </Card>
+
+                  {/* Vertical connector */}
+                  {index < layers.length - 1 && (
+                    <div className="absolute left-1/2 -bottom-4 -translate-x-1/2 w-px h-4 bg-linear-to-b from-border to-transparent" />
+                  )}
                 </motion.div>
+              ))}
+            </div>
+
+            {/* Bottom annotation */}
+            <motion.div
+              className="mt-12 text-center"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { delay: 0.6 } },
+              }}
+            >
+              <p className="text-foreground-muted text-sm font-light italic">
+                Each layer is designed to communicate seamlessly with the others
+              </p>
             </motion.div>
+          </motion.div>
         </SectionWrapper>
-    );
+      </div>
+    </div>
+  );
 }
