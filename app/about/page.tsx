@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import { Navbar, Footer } from "@/components/ui-components";
-import MissionSection from "@/components/ui-components/about/MissionSection";
-import TeamSection from "@/components/ui-components/about/TeamSection";
-import ExperienceSection from "@/components/ui-components/about/ExperienceSection";
+import AboutHero from "@/components/ui-components/about/AboutHero";
+import OriginSection from "@/components/ui-components/about/OriginSection";
+import JourneyTimeline from "@/components/ui-components/about/JourneyTimeline";
+import PrinciplesSection from "@/components/ui-components/about/PrinciplesSection";
 import { PreFooterCTA } from "@/components/ui-components/footer";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About Us | Cedar Core",
   description:
-    "Engineering robust systems with deep roots and infinite scale. Learn about our approach to building connected digital ecosystems.",
+    "We build the systems that other software depends on. Backend-first architecture built for decades, not deadlines.",
 };
 
 export default function AboutPage() {
@@ -16,9 +17,10 @@ export default function AboutPage() {
     <>
       <Navbar />
       <main className="relative z-10">
-        <MissionSection />
-        <TeamSection />
-        <ExperienceSection />
+        <AboutHero />
+        <OriginSection />
+        <JourneyTimeline />
+        <PrinciplesSection />
       </main>
       <Footer />
     </>
