@@ -3,8 +3,7 @@ import { Navbar, Footer } from "@/components/ui-components";
 import AboutHero from "@/components/ui-components/about/AboutHero";
 import OriginSection from "@/components/ui-components/about/OriginSection";
 import JourneyTimeline from "@/components/ui-components/about/JourneyTimeline";
-import PrinciplesSection from "@/components/ui-components/about/PrinciplesSection";
-import { PreFooterCTA } from "@/components/ui-components/footer";
+import TeamScrollSection from "@/components/ui-components/about/TeamScrollSection";
 
 export const metadata: Metadata = {
   title: "About Us | Cedar Core",
@@ -18,9 +17,9 @@ export default function AboutPage() {
       <Navbar />
       <main className="relative z-10">
         <AboutHero />
-        <OriginSection />
+        <TeamScrollSection />
         <JourneyTimeline />
-        <PrinciplesSection />
+        <OriginSection />
       </main>
       <Footer />
     </>
