@@ -997,7 +997,7 @@ export const config: PortfolioConfig = {
         "We build high-performance web applications using React, Next.js, and TypeScript. Our solutions are optimized for speed, accessibility, and SEO.",
       icon: "Globe",
       features: [
-        "React & Next.js",
+        "React & Nest.js",
         "TypeScript",
         "API Integration",
         "Database Design",
@@ -1195,7 +1195,7 @@ export const config: PortfolioConfig = {
     main: [
       { label: "Home", href: "/", order: 1 },
       { label: "About", href: "/about", order: 2 },
-      { label: "Services", href: "#services", order: 3 },
+      { label: "Services", href: "/services", order: 3 },
       { label: "Projects", href: "#projects", order: 4 },
       { label: "Ecosystem", href: "/ecosystem", order: 5 },
     ],

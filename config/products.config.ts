@@ -47,7 +47,7 @@ export const products: ProductConfig[] = [
     imageSrc: "/Laptop mockup invoverse 1.png",
     alt: "Invoverse application displayed on laptop mockup",
     description: "Inventory management system with automated workflows",
-    technologies: ["React", "Node.js", "MongoDB"],
+    technologies: ["Next.js", "Node.js", "Supabase"],
     year: 2024,
   },
   {
@@ -56,7 +56,7 @@ export const products: ProductConfig[] = [
     imageSrc: "/Laptop mockup perfumes legacy 1.png",
     alt: "Perfumes Legacy website displayed on laptop mockup",
     description: "Luxury e-commerce experience for premium fragrances",
-    technologies: ["Next.js", "Shopify", "Tailwind"],
+    technologies: ["Next.js", "Supabase"],
     year: 2024,
   },
 ];
